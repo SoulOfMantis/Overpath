@@ -598,6 +598,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 196490501}
+  spriteRenderer: {fileID: 996362683}
+  collisionLayer: {fileID: 196490501}
 --- !u!212 &996362683
 SpriteRenderer:
   m_ObjectHideFlags: 0
