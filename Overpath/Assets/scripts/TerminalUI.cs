@@ -7,11 +7,11 @@ public class TerminalUI : MonoBehaviour
 
     public InputField moveInputField;
     public InputField rotateInputField;
-    public InputField ifConditionInputField;
+    //public InputField ifConditionInputField;
 
     public Button applyMoveButton;
     public Button applyRotateButton;
-    public Button applyIfConditionButton;
+    //public Button applyIfConditionButton;
 
     public Button executeAlgorithmButton;
 
@@ -19,7 +19,7 @@ public class TerminalUI : MonoBehaviour
     {
         applyMoveButton.onClick.AddListener(OnApplyMove);
         applyRotateButton.onClick.AddListener(OnApplyRotate);
-        applyIfConditionButton.onClick.AddListener(OnApplyIfCondition);
+    //    applyIfConditionButton.onClick.AddListener(OnApplyIfCondition);
         executeAlgorithmButton.onClick.AddListener(OnExecuteAlgorithm);
     }
 
@@ -39,13 +39,13 @@ public class TerminalUI : MonoBehaviour
         }
     }
 
-    void OnApplyIfCondition()
-    {
-        if (bool.TryParse(ifConditionInputField.text, out bool conditionValue))
-        {
-            algorithmController.UpdateIfCondition("If", conditionValue);
-        }
-    }
+    //void OnApplyIfCondition()
+    //{
+    //    if (bool.TryParse(ifConditionInputField.text, out bool conditionValue))
+    //    {
+    //        algorithmController.UpdateIfCondition("If", conditionValue);
+    //    }
+    //}
 
     void OnExecuteAlgorithm()
     {

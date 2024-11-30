@@ -32,11 +32,10 @@ using UnityEngine.Tilemaps;
     public void Step()
     {
         Vector3Int newPosition = currentGridPosition + direction;
-        if (IsMoveValid(newPosition))
-        {
+        
             currentGridPosition = newPosition;
             UpdateEnemyPosition();
-        }
+        
     }
 
     public bool IsMoveValid(Vector3Int position) //пока что без логики проверки валидности
