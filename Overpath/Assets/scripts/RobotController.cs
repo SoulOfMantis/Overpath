@@ -8,7 +8,6 @@ using UnityEngine.Tilemaps;
     public Tilemap tilemap; // Ссылка на Tilemap
 
     // Переменная для отслеживания получения сигнала
-    private bool signalReceived = false;
 
     void Start()
     {
@@ -23,17 +22,11 @@ using UnityEngine.Tilemaps;
         transform.position = tilemap.GetCellCenterWorld(currentGridPosition);
     }
 
-    // Метод для получения сигнала (например, от другого компонента или системы)
-    public void ReceiveSignal()
-    {
-        signalReceived = true;
-    }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger");
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
+            other.gameObject.SendMessage("PlayerDeath");
         }
     }
 

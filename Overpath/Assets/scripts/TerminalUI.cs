@@ -23,7 +23,10 @@ public class TerminalUI : MonoBehaviour
     {
         if (int.TryParse(moveInputField.text, out int moveValue))
         {
+            if (moveValue > 0)
+            {
             algorithmController.UpdateBlockParameter("Move", moveValue);
+            }
         }
     }
 
@@ -31,7 +34,10 @@ public class TerminalUI : MonoBehaviour
     {
         if (int.TryParse(rotateInputField.text, out int rotateValue))
         {
+            if (rotateValue > 0)
+            {
             algorithmController.UpdateBlockParameter("Rotate", rotateValue);
+            }
         }
     }
 
@@ -45,6 +51,8 @@ public class TerminalUI : MonoBehaviour
 
     void Close()
     {
+        var player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        player.EndOfTurn();
         gameObject.SetActive(false);
     }
 }

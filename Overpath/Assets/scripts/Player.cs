@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     public GameObject GameOver;
     public bool MyTurn = true;
     public SpriteRenderer spriteRenderer; // Компонент для управления спрайтом
-    //public Tilemap collisionLayer; //поле коллизий
     void Start()
     {
         currentGridPosition = tilemap.WorldToCell(transform.position);
@@ -25,18 +24,22 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.S)) Move(Vector3Int.down);
             if (Input.GetKeyDown(KeyCode.A)) Move(Vector3Int.left);
             if (Input.GetKeyDown(KeyCode.D)) Move(Vector3Int.right);
-            // if (Input.GetKeyDown(KeyCode.F)) functional();
+            //if (Input.GetKeyDown(KeyCode.F)) Interact();
             if (Input.GetKeyDown(KeyCode.Space)) EndOfTurn();
         }
     }
 
-    // void functional()
-    // {
-    //     // блок для взаимодействия с функциональной клавишей
-    //     EndOfTurn();
-    // }
+    //void Interact()
+    //{
+    //MyTurn = false;
+    //Vector3Int newPosition = currentGridPosition + direction;
+    //if (tilemap.GetTile(newPosition).GameObject.CompareTag("Interactable"))
+    //{
+    //    tilemap.GetTile(newPosition).GameObject.SendMessage("Interacted");
+    //}
+    //}
 
-     void EndOfTurn()
+     public void EndOfTurn()
      {
         MyTurn = false;
 
@@ -47,9 +50,9 @@ public class Player : MonoBehaviour
      }
 
 
-    void Move(Vector3Int direction)
+    void Move(Vector3Int dir)
     {
-        Vector3Int newPosition = currentGridPosition + direction;
+        Vector3Int newPosition = currentGridPosition + dir;
 
         if (IsValidMove(newPosition))
         {
@@ -80,9 +83,10 @@ public class Player : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, angle);
     }
 
-    void OnDestroy()
+    void PlayerDeath()
     {
-     GameOver.SetActive(true);   
+     GameOver.SetActive(true);
+     MyTurn = false;   
     }
 
 }
