@@ -1,0 +1,11 @@
+public class RotateBlock : IntCommandBlock
+{
+    public override void Execute(ref int currentLine, RobotController robotController)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            robotController.Rotate();
+        }
+        currentLine++;
+    }
+}

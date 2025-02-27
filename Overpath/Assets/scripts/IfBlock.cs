@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 public class IfBlock : CommandBlock
 {
+    // public Dropdown Direction;
+    // public Dropdown Sign;
+    // public Dropdown Object;
     public bool condition;
-    public int jumpToLine = 3;
+    public int jumpToLine;
 
     public override void Execute(ref int currentLine, RobotController robotController)
     {
