@@ -6,8 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+<<<<<<< Updated upstream
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+=======
+    path: Assets/Scenes/menu.unity
+    guid: d393d4ed59fffe84ca234d1c6f955a65
+  - enabled: 1
+    path: Assets/Scenes/LevelMenu.unity
+    guid: 906db9a3c36e7ed4eafd995bb0f8f4ed
+  - enabled: 1
+    path: Assets/Scenes/versionZero.unity
+    guid: 12184c369e5c37e4b833bfca4e5aa975
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 08c54a457eaf25248b828e4501ab8237
+>>>>>>> Stashed changes
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
