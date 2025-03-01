@@ -91,9 +91,9 @@ public class Player : MonoBehaviour
         GameOver.SetActive(true);
         MyTurn = false;   
     }
-    //void PlayerWictory()
+    //void PlayerVictory()
     //{
-    //  GetComponentInChildren<ButtonController>().Wictory();
+    //  GetComponentInChildren<ButtonController>().Victory();
     //  WictoryMenu.SetActive(true);
     //  MyTurn = false;  
     //}

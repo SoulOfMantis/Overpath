@@ -59,7 +59,7 @@ public class ButtonController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void Wictory()
+    public void Victory()
     {
         Time.timeScale = 0;
         Bcontinue.SetActive(false);
