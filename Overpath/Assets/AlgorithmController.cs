@@ -3,28 +3,18 @@ public class AlgorithmController : MonoBehaviour
 {
     public CommandBlock[] commandBlocks;
     public RobotController robotController;
+    public Player player;
     private int currentLine = 0;
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) 
-        {
-            if (currentLine < commandBlocks.Length)
-            {
-                commandBlocks[currentLine].Execute(ref currentLine, robotController);
-            }
-        }
     }
-
-    public void UpdateBlockParameter(string blockName, int newValue)
+    public void ExecuteCurrentCommand()
     {
-        foreach (var block in commandBlocks)
+        if (currentLine < commandBlocks.Length)
         {
-            if (block.blockName == blockName)
-            {
-                if (block is MoveBlock moveBlock) moveBlock.n = newValue;
-                if (block is RotateBlock rotateBlock) rotateBlock.n = newValue;
-            }
+            commandBlocks[currentLine].Execute(ref currentLine, robotController);
+            player.MyTurn = true;
         }
     }
 
