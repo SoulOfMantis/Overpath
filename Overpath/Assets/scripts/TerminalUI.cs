@@ -3,10 +3,7 @@ using UnityEngine.UI;
 
 public class TerminalUI : MonoBehaviour
 {
-    public AlgorithmController algorithmController;
-
-    //public InputField ifConditionInputField;
-
+    public AlgorithmController Algorithm;
     public Button CloseButton;
 
     void Start()

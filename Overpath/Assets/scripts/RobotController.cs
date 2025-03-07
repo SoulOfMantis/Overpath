@@ -6,12 +6,7 @@ using UnityEngine.Tilemaps;
     public Vector3Int currentGridPosition; // Текущая позиция в сетке
     public Vector3Int direction = Vector3Int.up; // Направление взгляда
     public Tilemap tilemap; // Ссылка на Tilemap
-<<<<<<<< Updated upstream:Overpath/Assets/scripts/RobotController.cs
-
-    // Переменная для отслеживания получения сигнала
-========
     public GameObject player;
->>>>>>>> Stashed changes:Overpath/Assets/RobotController.cs
 
     void Start()
     {
@@ -26,16 +21,6 @@ using UnityEngine.Tilemaps;
         // Обновляем позицию робота в мире на основе текущей позиции в сетке
         transform.position = tilemap.GetCellCenterWorld(currentGridPosition);
     }
-
-<<<<<<<< Updated upstream:Overpath/Assets/scripts/RobotController.cs
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.gameObject.SendMessage("PlayerDeath");
-        }
-    }
-========
     // void OnTriggerEnter2D(Collider2D other)
     // {
     //     if (other.gameObject.CompareTag("Player"))
@@ -43,8 +28,6 @@ using UnityEngine.Tilemaps;
     //         other.gameObject.SendMessage("PlayerDeath");
     //     }
     // }
->>>>>>>> Stashed changes:Overpath/Assets/RobotController.cs
-
     public void Step()
     {
         Vector3Int newPosition = currentGridPosition + direction;
@@ -56,12 +39,10 @@ using UnityEngine.Tilemaps;
                 player.SendMessage("PlayerDeath");
         }
     }
-
     public bool IsValidMove(Vector3Int position)
     {
         return !tilemap.HasTile(position);
     }
-
     public void Rotate()
     {
         if (direction == Vector3Int.up) direction = Vector3Int.right;

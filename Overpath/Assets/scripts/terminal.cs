@@ -1,19 +1,18 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-public class InteractableObject : MonoBehaviour
+public class Terminal : InteractableObject 
 {
-    public GameObject Menu;
+    public GameObject TerminalUI;
+    public Tilemap tilemap;
 
-    void OnTriggerEnter2D(Collider2D other)
+    void Start()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.gameObject.GetComponent<Player>().MyTurn = false;
-            Interacted();
-        }
+        transform.position = tilemap.GetCellCenterWorld(tilemap.WorldToCell(transform.position));
     }
-    public void Interacted()
+
+    public override void Interacted()
     {
-    Menu.SetActive(true);
+        TerminalUI.SetActive(true);
     }
 }
