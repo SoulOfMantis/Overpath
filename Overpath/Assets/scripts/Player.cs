@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     private Vector3Int currentGridPosition;
     public Tilemap tilemap;
     public GameObject[] Robots;
-   // public GameObject WictoryMenu;
+   // public GameObject VictoryMenu;
     public GameObject GameOver;
     public bool MyTurn = true;
     public SpriteRenderer spriteRenderer; // Компонент для управления спрайтом
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
     //void PlayerVictory()
     //{
     //  GetComponentInChildren<ButtonController>().Victory();
-    //  WictoryMenu.SetActive(true);
+    //  VictoryMenu.SetActive(true);
     //  MyTurn = false;  
     //}
 }
