@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-public class terminal : InteractableObject
+public class Terminal : InteractableObject 
 {
-    public GameObject TerminalMenu;
+    public GameObject TerminalUI;
+    public Tilemap tilemap;
 
     void Start()
     {
@@ -11,8 +13,6 @@ public class terminal : InteractableObject
 
     public override void Interacted()
     {
-        TerminalMenu.SetActive(true);
-        
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().MyTurn = false;
+        TerminalUI.SetActive(true);
     }
 }

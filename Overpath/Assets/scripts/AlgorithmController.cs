@@ -2,20 +2,13 @@ using UnityEngine;
 public class AlgorithmController : MonoBehaviour
 {
     public CommandBlock[] commandBlocks;
+    public CommandPanel[] commandPanels;
     public RobotController robotController;
-<<<<<<< Updated upstream:Overpath/Assets/scripts/AlgorithmController.cs
-    Player player;
-=======
     public Player player;
->>>>>>> Stashed changes:Overpath/Assets/AlgorithmController.cs
     private int currentLine = 0;
 
     void Start()
     {
-<<<<<<< Updated upstream:Overpath/Assets/scripts/AlgorithmController.cs
-        player = GameObject.FindWithTag("Player").GetComponent<Player>(); 
-=======
->>>>>>> Stashed changes:Overpath/Assets/AlgorithmController.cs
     }
     public void ExecuteCurrentCommand()
     {
@@ -26,27 +19,13 @@ public class AlgorithmController : MonoBehaviour
         player.MyTurn = true;
     }
     
-    
-    public void UpdateBlockParameter(string blockName, int newValue)
+    public void SwapBlocksAndPanels(int indexA, int indexB)
     {
-        foreach (var block in commandBlocks)
-        {
-            if (block.blockName == blockName)
-            {
-                if (block is MoveBlock moveBlock) moveBlock.n = newValue;
-                if (block is RotateBlock rotateBlock) rotateBlock.n = newValue;
-            }
-        }
-    }
+        (commandBlocks[indexA], commandBlocks[indexB]) = (commandBlocks[indexB], commandBlocks[indexA]);
 
-    public void UpdateIfCondition(string blockName, bool newCondition)
-    {
-        foreach (var block in commandBlocks)
-        {
-            if (block.blockName == blockName && block is IfBlock ifBlock)
-            {
-                ifBlock.condition = newCondition;
-            }
-        }
+        (commandPanels[indexA], commandPanels[indexB]) = (commandPanels[indexB], commandPanels[indexA]);
+
+        commandPanels[indexA].BlockNumber = indexA;
+        commandPanels[indexB].BlockNumber = indexB;
     }
 }

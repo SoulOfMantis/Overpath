@@ -1,4 +1,4 @@
-public class RotateBlock : IntCommandBlock
+public class RotateBlock : IntBlock
 {
     public override void Execute(ref int currentLine, RobotController robotController)
     {

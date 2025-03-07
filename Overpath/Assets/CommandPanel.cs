@@ -2,8 +2,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
 public class CommandPanel : MonoBehaviour
 {
     public AlgorithmController Algorithm;
@@ -11,16 +9,16 @@ public class CommandPanel : MonoBehaviour
     public Button UpButton;
     public Button DownButton;
     public int BlockNumber;
-    public float height;
-    public float Dif;
+    public float gap = 10f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        height = gameObject.GetComponent<RectTransform>().rect.height;
+        var rectTransform = GetComponent<RectTransform>();
         text.text = Algorithm.commandBlocks[BlockNumber].blockName;
         UpButton.onClick.AddListener(ButtonUp);
         DownButton.onClick.AddListener(ButtonDown);
+        UpdatePanelPositions();
     }
 
     // Update is called once per frame
@@ -30,10 +28,20 @@ public class CommandPanel : MonoBehaviour
     }
     void BlockUpdate(int dir)
     {
-        (Algorithm.commandBlocks[BlockNumber], Algorithm.commandBlocks[BlockNumber + dir]) =
-        (Algorithm.commandBlocks[BlockNumber+dir], Algorithm.commandBlocks[BlockNumber]);
-        BlockNumber += dir;
-        gameObject.transform.position = gameObject.transform.position + new Vector3(0, -dir*(Dif + height/100), 0);
+        int newIndex = BlockNumber + dir;
+        Algorithm.SwapBlocksAndPanels(BlockNumber, newIndex);
+
+        UpdatePanelPositions();
+    }
+    void UpdatePanelPositions()
+    {
+        float currentY = 0f;
+        for (int i = 0; i < Algorithm.commandPanels.Length; i++)
+        {
+            RectTransform panelRect = Algorithm.commandPanels[i].GetComponent<RectTransform>();
+            panelRect.anchoredPosition = new Vector2(panelRect.anchoredPosition.x, -currentY);
+            currentY += panelRect.rect.height/2 + gap;
+        }
     }
     void ButtonUp()
     {

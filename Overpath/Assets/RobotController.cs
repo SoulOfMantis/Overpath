@@ -1,63 +1,33 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
+ 
     public class RobotController : MonoBehaviour
 {
     public Vector3Int currentGridPosition; // Текущая позиция в сетке
     public Vector3Int direction = Vector3Int.up; // Направление взгляда
     public Tilemap tilemap; // Ссылка на Tilemap
-<<<<<<<< Updated upstream:Overpath/Assets/scripts/RobotController.cs
-
-    // Переменная для отслеживания получения сигнала
-========
-    public GameObject player;
->>>>>>>> Stashed changes:Overpath/Assets/RobotController.cs
-
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");        
         // Получаем текущую позицию в сетке и обновляем позицию врага
         currentGridPosition = tilemap.WorldToCell(transform.position);
         UpdateEnemyPosition();
     }
-
     void UpdateEnemyPosition()
     {
         // Обновляем позицию робота в мире на основе текущей позиции в сетке
         transform.position = tilemap.GetCellCenterWorld(currentGridPosition);
     }
-
-<<<<<<<< Updated upstream:Overpath/Assets/scripts/RobotController.cs
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.gameObject.SendMessage("PlayerDeath");
-        }
-    }
-========
-    // void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Player"))
-    //     {
-    //         other.gameObject.SendMessage("PlayerDeath");
-    //     }
-    // }
->>>>>>>> Stashed changes:Overpath/Assets/RobotController.cs
-
     public void Step()
     {
         Vector3Int newPosition = currentGridPosition + direction;
-        if (IsValidMove(newPosition))
+        if (IsMoveValid(newPosition))
         {
             currentGridPosition = newPosition;
             UpdateEnemyPosition();
-            if (player.transform.position == tilemap.GetCellCenterWorld(newPosition))
-                player.SendMessage("PlayerDeath");
         }
     }
 
-    public bool IsValidMove(Vector3Int position)
+    public bool IsMoveValid(Vector3Int position) //пока что без логики проверки валидности
     {
         return !tilemap.HasTile(position);
     }

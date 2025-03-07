@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-public class door : InteractableObject
+public class Door : InteractableObject
 {
     public GameObject VictoryMenu;
+    public Tilemap tilemap;
 
     void Start()
     {

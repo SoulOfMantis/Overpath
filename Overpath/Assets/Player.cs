@@ -6,18 +6,17 @@ public class Player : MonoBehaviour
     private Vector3Int currentGridPosition;
     public Tilemap tilemap;
     public GameObject[] Robots;
-    public GameObject[] InteractableObjects;
+    public GameObject[] Interactable;
     public GameObject GameOver;
+    Vector3Int dir = Vector3Int.up;
     public bool MyTurn = true;
     public SpriteRenderer spriteRenderer; // Компонент для управления спрайтом
-    public Vector3Int direction = Vector3Int.up;
-
     void Start()
     {
         currentGridPosition = tilemap.WorldToCell(transform.position);
         UpdatePlayerPosition();
         Robots = GameObject.FindGameObjectsWithTag("Enemy"); 
-        InteractableObjects = GameObject.FindGameObjectsWithTag("Interactable");
+        Interactable = GameObject.FindGameObjectsWithTag("Interactable"); 
     }
 
     void Update()
@@ -33,41 +32,40 @@ public class Player : MonoBehaviour
         }
     }
 
-    void EndOfTurn()
+    void Interact()
     {
+    Vector3Int newPosition = currentGridPosition + dir;
+    foreach (var Object in Interactable)
+        if (Object.transform.position == tilemap.GetCellCenterWorld(newPosition))
+        {
+            Object.SendMessage("Interacted");
+            EndOfTurn();
+            break;
+        }
+    }
+
+     public void EndOfTurn()
+     {
         MyTurn = false;
+
         foreach (GameObject robot in Robots)
         {
-            robot.SendMessage("ExecuteCurrentCommand");
+        robot.SendMessage("ExecuteCurrentCommand");
         }
-    }
+     }
 
-    void Interact()
+
+    void Move(Vector3Int direction)
     {        
         Vector3Int newPosition = currentGridPosition + direction;
-        foreach (GameObject Object in InteractableObjects)
-        {
-            if (Object.transform.position == tilemap.GetCellCenterWorld(newPosition))
-                {
-                    Object.SendMessage("Interacted");
-                    EndOfTurn();
-                    break;
-                }
-        }
-    }
-
-    void Move(Vector3Int dir)
-    {
-        Vector3Int newPosition = currentGridPosition + dir;
-
-        direction = dir;
+        dir = direction;
         if (IsValidMove(newPosition))
         {
+            EndOfTurn();
             currentGridPosition = newPosition;
             UpdatePlayerPosition();
-           // RotatePlayer(direction); // Поворот персонажа
+            //RotatePlayer(direction); // Поворот персонажа
         }
-        EndOfTurn();
     }
 
     bool IsValidMove(Vector3Int position)
@@ -89,4 +87,11 @@ public class Player : MonoBehaviour
     //     else if (direction == Vector3Int.right) angle = 360f;
     //     transform.eulerAngles = new Vector3(0, 0, angle);
     // }
+
+    void PlayerDeath()
+    {
+     GameOver.SetActive(true);
+     MyTurn = false;   
+    }
+
 }

@@ -5,21 +5,20 @@ public class TerminalUI : MonoBehaviour
 {
     public AlgorithmController algorithmController;
 
-    public InputField moveInputField;
-    public InputField rotateInputField;
+    //public InputField ifConditionInputField;
+
     public Button CloseButton;
 
-    public int Cnt = 0;
-    public int Target = 3;
-
     void Start()
-    {  
+    {
         CloseButton.onClick.AddListener(Close);
     }
 
+
     void Close()
     {
+        var player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        player.EndOfTurn();
         gameObject.SetActive(false);
     }
-
 }
