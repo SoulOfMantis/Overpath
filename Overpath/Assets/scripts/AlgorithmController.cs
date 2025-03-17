@@ -14,8 +14,8 @@ public class AlgorithmController : MonoBehaviour
         if (currentLine < commandBlocks.Length && Cnt < Target)
             {
                 commandBlocks[currentLine].Execute(ref currentLine, robotController);
+                currentLine++;
             }
-        Cnt++;
         player.MyTurn = true;
     }
     

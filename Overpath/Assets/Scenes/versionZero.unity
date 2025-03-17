@@ -147,8 +147,8 @@ RectTransform:
   m_GameObject: {fileID: 118973895}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 492770482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -769,9 +769,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 333173464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96d1c87ab783bb2418655148f2cfe35b, type: 3}
+  m_Script: {fileID: 11500000, guid: a704216aa02a5cd4e931de89bda684f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockName: Move
+  n: 0
 --- !u!1 &354087955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,9 +1133,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 492770481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7da6ad70af9c96429bba5139682f000, type: 3}
+  m_Script: {fileID: 11500000, guid: b8c4e894a9d522c4b8234be6c0f84b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockName: If
+  condition: 0
+  jumpToLine: 0
 --- !u!1 &552790706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,9 +2021,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 820600142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 282835fa2b296a54aac1f259c01b28d3, type: 3}
+  m_Script: {fileID: 11500000, guid: f5cb48c87c1f65c469330a2c7aa454d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  commandBlocks:
+  - {fileID: 333173469}
+  - {fileID: 492770486}
+  - {fileID: 1560985848}
+  - {fileID: 1677856925}
+  commandPanels:
+  - {fileID: 333173466}
+  - {fileID: 492770483}
+  - {fileID: 1560985845}
+  - {fileID: 1677856922}
+  robotController: {fileID: 820600143}
+  Cnt: 0
+  Target: 0
+  player: {fileID: 912581149}
 --- !u!61 &820600148
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2127,7 +2146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 311.41766, y: -86.98413}
+  m_AnchoredPosition: {x: 308.7, y: -75}
   m_SizeDelta: {x: 27, y: 27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &872851840
@@ -2537,14 +2556,14 @@ RectTransform:
   m_GameObject: {fileID: 989985606}
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 492770482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 311.41763, y: -86.98413}
+  m_AnchoredPosition: {x: 307.9, y: -86.98413}
   m_SizeDelta: {x: 27, y: 27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &989985608
@@ -5281,9 +5300,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1677856920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cddb69f104409a469921b607f380221, type: 3}
+  m_Script: {fileID: 11500000, guid: 3419cacd9ee17a04c8331e004caf086d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockName: GoTo
+  jumpToLine: 0
 --- !u!1 &1839914611
 GameObject:
   m_ObjectHideFlags: 0
@@ -5497,7 +5518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 311.41766, y: 84.44449}
+  m_AnchoredPosition: {x: 311.4, y: 84.44449}
   m_SizeDelta: {x: 27, y: 27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1890765020
