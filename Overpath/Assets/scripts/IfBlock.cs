@@ -6,7 +6,7 @@ public class IfBlock : CommandBlock
     // public Dropdown Sign;
     // public Dropdown Object;
     public bool condition;
-    public int jumpToLine;
+    public int jumpToLine = 3;
 
     public override void Execute(ref int currentLine, RobotController robotController)
     {

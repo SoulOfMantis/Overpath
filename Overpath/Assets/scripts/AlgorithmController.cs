@@ -4,18 +4,17 @@ public class AlgorithmController : MonoBehaviour
     public CommandBlock[] commandBlocks;
     public CommandPanel[] commandPanels;
     public RobotController robotController;
-    public int Cnt = 0;
+    public int CodeChanges = 0;
     public int Target;
     public Player player;
     private int currentLine = 0;
 
     public void ExecuteCurrentCommand()
     {
-        if (currentLine < commandBlocks.Length && Cnt < Target)
-            {
-                commandBlocks[currentLine].Execute(ref currentLine, robotController);
-                currentLine++;
-            }
+        if (currentLine == commandBlocks.Length)
+            currentLine = 0;
+        commandBlocks[currentLine].Execute(ref currentLine, robotController);
+        currentLine++;
         player.MyTurn = true;
     }
     
