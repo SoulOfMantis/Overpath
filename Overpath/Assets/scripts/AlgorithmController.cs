@@ -2,40 +2,29 @@ using UnityEngine;
 public class AlgorithmController : MonoBehaviour
 {
     public CommandBlock[] commandBlocks;
+    public CommandPanel[] commandPanels;
     public RobotController robotController;
+    public int CodeChanges = 0;
+    public int Target;
+    public Player player;
     private int currentLine = 0;
 
-    public void Update()
+    public void ExecuteCurrentCommand()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) 
-        {
-            if (currentLine < commandBlocks.Length)
-            {
-                commandBlocks[currentLine].Execute(ref currentLine, robotController);
-            }
-        }
+        if (currentLine == commandBlocks.Length)
+            currentLine = 0;
+        commandBlocks[currentLine].Execute(ref currentLine, robotController);
+        currentLine++;
+        player.MyTurn = true;
     }
-
-    public void UpdateBlockParameter(string blockName, int newValue)
+    
+    public void SwapBlocksAndPanels(int indexA, int indexB)
     {
-        foreach (var block in commandBlocks)
-        {
-            if (block.blockName == blockName)
-            {
-                if (block is MoveBlock moveBlock) moveBlock.n = newValue;
-                if (block is RotateBlock rotateBlock) rotateBlock.n = newValue;
-            }
-        }
-    }
+        (commandBlocks[indexA], commandBlocks[indexB]) = (commandBlocks[indexB], commandBlocks[indexA]);
 
-    public void UpdateIfCondition(string blockName, bool newCondition)
-    {
-        foreach (var block in commandBlocks)
-        {
-            if (block.blockName == blockName && block is IfBlock ifBlock)
-            {
-                ifBlock.condition = newCondition;
-            }
-        }
+        (commandPanels[indexA], commandPanels[indexB]) = (commandPanels[indexB], commandPanels[indexA]);
+
+        commandPanels[indexA].BlockNumber = indexA;
+        commandPanels[indexB].BlockNumber = indexB;
     }
 }

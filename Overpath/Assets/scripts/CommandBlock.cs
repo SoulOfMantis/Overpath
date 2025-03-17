@@ -10,8 +10,7 @@ public abstract class CommandBlock : MonoBehaviour
     public abstract void Execute(ref int currentLine, RobotController robotController);
 }
 
-//сами блоки
-
-
-
-
+public abstract class IntBlock : CommandBlock
+{
+    public int n;
+}

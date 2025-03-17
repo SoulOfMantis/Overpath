@@ -1,17 +1,16 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
- 
+
     public class RobotController : MonoBehaviour
 {
     public Vector3Int currentGridPosition; // Текущая позиция в сетке
     public Vector3Int direction = Vector3Int.up; // Направление взгляда
     public Tilemap tilemap; // Ссылка на Tilemap
-
-    // Переменная для отслеживания получения сигнала
-    private bool signalReceived = false;
+    public GameObject player;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");        
         // Получаем текущую позицию в сетке и обновляем позицию врага
         currentGridPosition = tilemap.WorldToCell(transform.position);
         UpdateEnemyPosition();
@@ -22,27 +21,28 @@ using UnityEngine.Tilemaps;
         // Обновляем позицию робота в мире на основе текущей позиции в сетке
         transform.position = tilemap.GetCellCenterWorld(currentGridPosition);
     }
-
-    // Метод для получения сигнала (например, от другого компонента или системы)
-    public void ReceiveSignal()
-    {
-        signalReceived = true;
-    }
-
+    // void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //     {
+    //         other.gameObject.SendMessage("PlayerDeath");
+    //     }
+    // }
     public void Step()
     {
         Vector3Int newPosition = currentGridPosition + direction;
-        
+        if (IsValidMove(newPosition))
+        {
             currentGridPosition = newPosition;
             UpdateEnemyPosition();
-        
+            if (player.transform.position == tilemap.GetCellCenterWorld(newPosition))
+                player.SendMessage("PlayerDeath");
+        }
     }
-
-    public bool IsMoveValid(Vector3Int position) //пока что без логики проверки валидности
+    public bool IsValidMove(Vector3Int position)
     {
-        return true;
+        return !tilemap.HasTile(position);
     }
-
     public void Rotate()
     {
         if (direction == Vector3Int.up) direction = Vector3Int.right;
