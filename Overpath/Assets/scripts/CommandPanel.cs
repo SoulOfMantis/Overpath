@@ -21,15 +21,12 @@ public class CommandPanel : MonoBehaviour
         UpdatePanelPositions();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void BlockUpdate(int dir)
     {
         int newIndex = BlockNumber + dir;
         Algorithm.SwapBlocksAndPanels(BlockNumber, newIndex);
+        
+        Algorithm.ChangeOfAlgorithm();
 
         UpdatePanelPositions();
     }

@@ -18,8 +18,13 @@ public class IntBlockInputField : MonoBehaviour
             if (NewN > 0 && terminalUI.Algorithm.CodeChanges < terminalUI.Algorithm.Target)
             {
                 LinkedBlock.n = NewN;
-                terminalUI.Algorithm.CodeChanges++;
+                terminalUI.Algorithm.ChangeOfAlgorithm();
             }  
         }
     }
 }
+
+// public class InternalIntBlockInputField : IntBlockInputField
+// {
+//     override public InternalIntBlock LinkedBlock;
+// }

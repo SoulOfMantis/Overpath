@@ -12,5 +12,23 @@ public abstract class CommandBlock : MonoBehaviour
 
 public abstract class IntBlock : CommandBlock
 {
-    public int n;
+    public int n = 1;
+}
+
+public abstract class InternalBlock : CommandBlock
+{
+    public CommandBlock[] NestedBlocks;
+
+    public void ExecuteNestedBlocks(ref int currentLine, RobotController robotController)
+    {
+        foreach (CommandBlock block in NestedBlocks)
+        {
+            block.Execute(ref currentLine, robotController);
+        }
+    }
+}
+
+public abstract class InternalIntBlock : InternalBlock
+{
+    public int n = 1;
 }

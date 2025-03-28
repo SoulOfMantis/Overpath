@@ -14,7 +14,6 @@ public class AlgorithmController : MonoBehaviour
         if (currentLine == commandBlocks.Length)
             currentLine = 0;
         commandBlocks[currentLine].Execute(ref currentLine, robotController);
-        currentLine++;
         player.MyTurn = true;
     }
     
@@ -26,5 +25,10 @@ public class AlgorithmController : MonoBehaviour
 
         commandPanels[indexA].BlockNumber = indexA;
         commandPanels[indexB].BlockNumber = indexB;
+    }
+
+    public void ChangeOfAlgorithm()
+    {
+        CodeChanges++;
     }
 }
