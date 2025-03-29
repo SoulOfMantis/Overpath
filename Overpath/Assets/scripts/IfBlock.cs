@@ -9,7 +9,7 @@ public class IfBlock : InternalBlock
     public override void Execute(ref int currentLine, RobotController robotController)
     {
     Vector3Int SearchedPosition = robotController.currentGridPosition + robotController.direction;   
-    switch(Object.captionText.text)
+    switch (Object.captionText.text)
     {
         case "Препятствие":
         {
