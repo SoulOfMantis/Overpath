@@ -6,18 +6,22 @@ public class IfBlock : InternalBlock
     public Dropdown Object;
     public bool condition;
 
-
     public override void Execute(ref int currentLine, RobotController robotController)
     {
     Vector3Int SearchedPosition = robotController.currentGridPosition + robotController.direction;   
     switch(Object.captionText.text)
     {
+        case "Препятствие":
+        {
+            condition = !robotController.IsValidMove(SearchedPosition);
+            break;
+        }
+        
         case "Объект":
         {
             condition = robotController.tilemap.HasTile(SearchedPosition);
             break;
         }
-        
         // case "Человек":
         // {
         //     condition = ;
@@ -42,6 +46,7 @@ public class IfBlock : InternalBlock
 
     if (condition)
         ExecuteNestedBlocks(ref currentLine, robotController);
+
     currentLine++;
     }
 }

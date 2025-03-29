@@ -17,14 +17,29 @@ public abstract class IntBlock : CommandBlock
 
 public abstract class InternalBlock : CommandBlock
 {
-    public CommandBlock[] NestedBlocks;
+    public CommandBlock[] nestedBlocks;
+    public NestedPanel[] nestedPanels;
+    public AlgorithmController algorithm;
 
     public void ExecuteNestedBlocks(ref int currentLine, RobotController robotController)
     {
-        foreach (CommandBlock block in NestedBlocks)
+        foreach (CommandBlock block in nestedBlocks)
         {
             block.Execute(ref currentLine, robotController);
         }
+    }
+
+    public void SwapNestedBlocksAndPanels(int indexA, int indexB)
+    { 
+        if (algorithm.ChangeOfAlgorithm())
+        {
+            (nestedBlocks[indexA], nestedBlocks[indexB]) = (nestedBlocks[indexB], nestedBlocks[indexA]);
+            (nestedPanels[indexA], nestedPanels[indexB]) = (nestedPanels[indexB], nestedPanels[indexA]);
+        
+            nestedPanels[indexA].BlockNumber = indexA;
+            nestedPanels[indexB].BlockNumber = indexB;
+        }
+
     }
 }
 
