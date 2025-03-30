@@ -12,7 +12,7 @@ using UnityEngine.Tilemaps;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");        
-        animator = GetComponentInChildren<Animator>();
+     //   animator = GetComponentInChildren<Animator>();
         // Получаем текущую позицию в сетке и обновляем позицию врага
         currentGridPosition = tilemap.WorldToCell(transform.position);
         UpdateEnemyPosition();
@@ -58,7 +58,7 @@ using UnityEngine.Tilemaps;
     }
     void SetAnimatorDirection(int direction)
     {
-        animator.SetInteger("Vector", direction);
+       // animator.SetInteger("Vector", direction);
     }
 
     

@@ -10,6 +10,10 @@ public class AlgorithmController : MonoBehaviour
     public Player player;
     private int currentLine = 0;
 
+    void Start()
+    {
+        myTerminal.codeChangesCounter.text = $"0/{Target}";
+    }
     public void ExecuteCurrentCommand()
     {
         if (currentLine >= commandBlocks.Length)
@@ -33,6 +37,7 @@ public class AlgorithmController : MonoBehaviour
         if (CodeChanges < Target)
         {
             CodeChanges++;
+            myTerminal.codeChangesCounter.text = $"{CodeChanges}/{Target}";
             return true;
         }
         else
