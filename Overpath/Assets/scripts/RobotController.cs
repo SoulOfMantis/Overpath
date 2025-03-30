@@ -16,6 +16,8 @@ using UnityEngine.Tilemaps;
         UpdateEnemyPosition();
     }
 
+
+
     void UpdateEnemyPosition()
     {
         // Обновляем позицию робота в мире на основе текущей позиции в сетке
