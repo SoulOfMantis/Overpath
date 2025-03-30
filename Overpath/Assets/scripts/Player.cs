@@ -8,15 +8,28 @@ public class Player : MonoBehaviour
     public GameObject[] Robots;
     public GameObject[] Interactable;
     public GameObject GameOver;
-    Vector3Int dir = Vector3Int.up;
+    Vector3Int dir = Vector3Int.down; // Более явное начальное значение
     public bool MyTurn = true;
-    public SpriteRenderer spriteRenderer; // Компонент для управления спрайтом
+    public SpriteRenderer spriteRenderer;
+    private Animator animator;
+
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+        if (animator == null)
+        {
+            Debug.LogError("Animator not found on Player_Sprite!");
+        }
+
         currentGridPosition = tilemap.WorldToCell(transform.position);
         UpdatePlayerPosition();
-        Robots = GameObject.FindGameObjectsWithTag("Enemy"); 
-        Interactable = GameObject.FindGameObjectsWithTag("Interactable"); 
+        Robots = GameObject.FindGameObjectsWithTag("Enemy");
+        Interactable = GameObject.FindGameObjectsWithTag("Interactable");
+        
+        // Получаем начальное направление анимации
+        int initialDirection = GetDirectionInt();
+        Debug.Log("Initial direction: " + initialDirection);
+        UpdateAnimatorDirection(initialDirection);
     }
 
     void Update()
@@ -34,29 +47,29 @@ public class Player : MonoBehaviour
 
     void Interact()
     {
-    Vector3Int newPosition = currentGridPosition + dir;
-    foreach (var Object in Interactable)
-        if (Object.transform.position == tilemap.GetCellCenterWorld(newPosition))
-        {
-            Object.SendMessage("Interacted");
-            EndOfTurn();
-            break;
-        }
+        Vector3Int newPosition = currentGridPosition + dir;
+        foreach (var Object in Interactable)
+            if (Object.transform.position == tilemap.GetCellCenterWorld(newPosition))
+            {
+                Object.SendMessage("Interacted");
+                EndOfTurn();
+                break;
+            }
     }
 
-     public void EndOfTurn()
-     {
+    public void EndOfTurn()
+    {
         MyTurn = false;
 
         foreach (GameObject robot in Robots)
         {
-        robot.SendMessage("ExecuteCurrentCommand");
+            robot.SendMessage("ExecuteCurrentCommand");
         }
-     }
-
+    }
 
     void Move(Vector3Int direction)
-    {        
+    {
+        Debug.Log("Move direction: " + direction);
         Vector3Int newPosition = currentGridPosition + direction;
         dir = direction;
         if (IsValidMove(newPosition))
@@ -64,7 +77,11 @@ public class Player : MonoBehaviour
             EndOfTurn();
             currentGridPosition = newPosition;
             UpdatePlayerPosition();
-            //RotatePlayer(direction); // Поворот персонажа
+
+            // Получаем направление анимации после движения
+            int newDirection = GetDirectionInt();
+            Debug.Log("New direction: " + newDirection);
+            UpdateAnimatorDirection(newDirection);
         }
     }
 
@@ -78,20 +95,25 @@ public class Player : MonoBehaviour
         transform.position = tilemap.GetCellCenterWorld(currentGridPosition);
     }
 
-    // void RotatePlayer(Vector3Int direction)
-    // {
-    //     float angle = 0f;
-    //     if (direction == Vector3Int.up) angle = 90;
-    //     else if (direction == Vector3Int.down) angle = 270f;
-    //     else if (direction == Vector3Int.left) angle = 180f;
-    //     else if (direction == Vector3Int.right) angle = 360f;
-    //     transform.eulerAngles = new Vector3(0, 0, angle);
-    // }
-
     void PlayerDeath()
     {
-     GameOver.SetActive(true);
-     MyTurn = false;   
+        GameOver.SetActive(true);
+        MyTurn = false;
     }
 
+    int GetDirectionInt()
+    {
+        if (dir == Vector3Int.up) return 1;
+        else if (dir == Vector3Int.right) return 2;
+        else if (dir == Vector3Int.down) return 3;
+        else if (dir == Vector3Int.left) return 4;
+        Debug.LogWarning("Unknown direction, defaulting to down");
+        return 3; // Вниз по умолчанию
+    }
+
+    void UpdateAnimatorDirection(int direction)
+    {
+        Debug.Log("Setting animator direction to: " + direction);
+        animator.SetInteger("Vector", direction);
+    }
 }
