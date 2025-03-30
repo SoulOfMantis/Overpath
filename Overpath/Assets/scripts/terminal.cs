@@ -13,6 +13,7 @@ public class Terminal : InteractableObject
 
     public override void Interacted()
     {
-        TerminalUI.SetActive(true);
+        if (TerminalUI.GetComponent<TerminalUI>().Algorithm.CodeChanges < TerminalUI.GetComponent<TerminalUI>().Algorithm.Target)
+            TerminalUI.SetActive(true);
     }
 }
