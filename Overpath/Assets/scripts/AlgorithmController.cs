@@ -4,6 +4,7 @@ public class AlgorithmController : MonoBehaviour
     public CommandBlock[] commandBlocks;
     public CommandPanel[] commandPanels;
     public RobotController robotController;
+    public TerminalUI myTerminal;
     public int CodeChanges = 0;
     public int Target;
     public Player player;
@@ -11,7 +12,7 @@ public class AlgorithmController : MonoBehaviour
 
     public void ExecuteCurrentCommand()
     {
-        if (currentLine == commandBlocks.Length)
+        if (currentLine >= commandBlocks.Length)
             currentLine = 0;
         commandBlocks[currentLine].Execute(ref currentLine, robotController);
         player.MyTurn = true;
@@ -25,5 +26,19 @@ public class AlgorithmController : MonoBehaviour
 
         commandPanels[indexA].BlockNumber = indexA;
         commandPanels[indexB].BlockNumber = indexB;
+    }
+
+    public bool ChangeOfAlgorithm()
+    {
+        if (CodeChanges < Target)
+        {
+            CodeChanges++;
+            return true;
+        }
+        else
+        {
+            myTerminal.gameObject.SetActive(false);
+            return false;
+        }
     }
 }

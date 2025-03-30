@@ -93,5 +93,4 @@ public class Player : MonoBehaviour
      GameOver.SetActive(true);
      MyTurn = false;   
     }
-
 }

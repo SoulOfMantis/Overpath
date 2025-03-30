@@ -2,9 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CommandPanel : MonoBehaviour
+public class NestedPanel : MonoBehaviour
 {
-    public AlgorithmController Algorithm;
+    public InternalBlock motherBlock;
     public TextMeshProUGUI text;
     public Button UpButton;
     public Button DownButton;
@@ -15,7 +15,7 @@ public class CommandPanel : MonoBehaviour
     void Start()
     {
         var rectTransform = GetComponent<RectTransform>();
-        text.text = Algorithm.commandBlocks[BlockNumber].blockName;
+        text.text = motherBlock.nestedBlocks[BlockNumber].blockName;
         UpButton.onClick.AddListener(ButtonUp);
         DownButton.onClick.AddListener(ButtonDown);
         UpdatePanelPositions();
@@ -24,18 +24,16 @@ public class CommandPanel : MonoBehaviour
     void BlockUpdate(int dir)
     {
         int newIndex = BlockNumber + dir;
-        Algorithm.SwapBlocksAndPanels(BlockNumber, newIndex);
-        
-        Algorithm.ChangeOfAlgorithm();
+        motherBlock.SwapNestedBlocksAndPanels(BlockNumber, newIndex);
 
         UpdatePanelPositions();
     }
     void UpdatePanelPositions()
     {
         float currentY = 0f;
-        for (int i = 0; i < Algorithm.commandPanels.Length; i++)
+        for (int i = 0; i < motherBlock.nestedPanels.Length; i++)
         {
-            RectTransform panelRect = Algorithm.commandPanels[i].GetComponent<RectTransform>();
+            RectTransform panelRect = motherBlock.nestedPanels[i].GetComponent<RectTransform>();
             panelRect.anchoredPosition = new Vector2(panelRect.anchoredPosition.x, -currentY);
             currentY += panelRect.rect.height/2 + gap;
         }
@@ -47,8 +45,8 @@ public class CommandPanel : MonoBehaviour
     }
     void ButtonDown()
     {
-        if (BlockNumber < Algorithm.commandBlocks.Length)
-            if (BlockNumber != Algorithm.commandBlocks.Length-1)
+        if (BlockNumber < motherBlock.nestedBlocks.Length)
+            if (BlockNumber != motherBlock.nestedBlocks.Length-1)
                 BlockUpdate(1);
     }
     

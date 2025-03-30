@@ -15,11 +15,14 @@ public class IntBlockInputField : MonoBehaviour
     {
         if (int.TryParse(Field.text, out int NewN))
         {
-            if (NewN > 0 && terminalUI.Algorithm.CodeChanges < terminalUI.Algorithm.Target)
-            {
+            if (NewN > 0 && terminalUI.Algorithm.ChangeOfAlgorithm())            
                 LinkedBlock.n = NewN;
-                terminalUI.Algorithm.CodeChanges++;
-            }  
+            
         }
     }
 }
+
+// public class InternalIntBlockInputField : IntBlockInputField
+// {
+//     override public InternalIntBlock LinkedBlock;
+// }

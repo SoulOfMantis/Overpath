@@ -1,25 +1,52 @@
 using UnityEngine;
 using UnityEngine.UI;
-public class IfBlock : CommandBlock
+public class IfBlock : InternalBlock
 {
-    // public Dropdown Direction;
-    // public Dropdown Sign;
-    // public Dropdown Object;
+    public Dropdown Sign;
+    public Dropdown Object;
     public bool condition;
-    public int jumpToLine = 3;
 
     public override void Execute(ref int currentLine, RobotController robotController)
     {
-        Vector3Int nextPosition = robotController.currentGridPosition + robotController.direction;
-        condition = !robotController.IsValidMove(nextPosition);
+    Vector3Int SearchedPosition = robotController.currentGridPosition + robotController.direction;   
+    switch (Object.captionText.text)
+    {
+        case "Препятствие":
+        {
+            condition = !robotController.IsValidMove(SearchedPosition);
+            break;
+        }
+        
+        case "Объект":
+        {
+            condition = robotController.tilemap.HasTile(SearchedPosition);
+            break;
+        }
+        // case "Человек":
+        // {
+        //     condition = ;
+        //     break;
+        // }
 
-        if (condition)
+        // case "Робот":
+        // {
+        //     condition = ;
+        //     break;
+        // }
+    }
+    
+    switch (Sign.captionText.text)
+    {
+        case "!=":
         {
-            currentLine++;
+            condition = !condition;
+            break;
         }
-        else
-        {
-            currentLine = jumpToLine;
-        }
+    }
+
+    if (condition)
+        ExecuteNestedBlocks(ref currentLine, robotController);
+
+    currentLine++;
     }
 }
