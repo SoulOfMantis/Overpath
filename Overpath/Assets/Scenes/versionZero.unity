@@ -1080,8 +1080,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1316390819
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 2469665225908930208, guid: 6ed0817fddbeb1f47b3901db8bb87c97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1575,7 +1575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.96834415}
   m_AnchorMax: {x: 0.5, y: 0.96834415}
-  m_AnchoredPosition: {x: 266.0636, y: -134.85078}
+  m_AnchoredPosition: {x: 266.0636, y: -134.85077}
   m_SizeDelta: {x: 677.6, y: 254.59998}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &492770483
