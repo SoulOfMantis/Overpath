@@ -1,22 +1,19 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Player : MonoBehaviour
+public class Player : Actor
 {
-    private Vector3Int currentGridPosition;
-    public Tilemap tilemap;
-    public GameObject[] Robots;
-    public GameObject[] Interactable;
     public GameObject GameOver;
-    Vector3Int dir = Vector3Int.up;
     public bool MyTurn = true;
     public SpriteRenderer spriteRenderer; // Компонент для управления спрайтом
     void Start()
     {
+        IsPlayer = true;
         currentGridPosition = tilemap.WorldToCell(transform.position);
-        UpdatePlayerPosition();
-        Robots = GameObject.FindGameObjectsWithTag("Enemy"); 
-        Interactable = GameObject.FindGameObjectsWithTag("Interactable"); 
+        UpdatePosition();
+        AllActors[currentGridPosition] = this;
+        foreach (var m in GameObject.FindGameObjectsWithTag("Interactable"))
+            Interactable[tilemap.WorldToCell(m.transform.position)] = m.GetComponent<InteractableObject>();
     }
 
     void Update()
@@ -34,13 +31,11 @@ public class Player : MonoBehaviour
 
     void Interact()
     {
-    Vector3Int newPosition = currentGridPosition + dir;
-    foreach (var Object in Interactable)
-        if (Object.transform.position == tilemap.GetCellCenterWorld(newPosition))
+    Vector3Int newPosition = currentGridPosition + direction;
+    if (Interactable.ContainsKey(newPosition))
         {
-            Object.SendMessage("Interacted");
+            Interactable[newPosition].Interacted();
             EndOfTurn();
-            break;
         }
     }
 
@@ -48,34 +43,30 @@ public class Player : MonoBehaviour
      {
         MyTurn = false;
 
-        foreach (GameObject robot in Robots)
+        foreach (var robot in AllActors.Values)
         {
-        robot.SendMessage("ExecuteCurrentCommand");
+            if (!robot.IsPlayer)  
+            {
+                robot.gameObject.SendMessage("ExecuteCurrentCommand");
+                if (robot.currentGridPosition == currentGridPosition) Death();
+            }
         }
      }
 
 
-    void Move(Vector3Int direction)
+    void Move(Vector3Int dir)
     {        
-        Vector3Int newPosition = currentGridPosition + direction;
-        dir = direction;
+        Vector3Int newPosition = currentGridPosition + dir;
+        direction = dir;
         if (IsValidMove(newPosition))
         {
-            EndOfTurn();
+            AllActors.Remove(currentGridPosition);
             currentGridPosition = newPosition;
-            UpdatePlayerPosition();
+            AllActors[currentGridPosition] = this;
+            UpdatePosition();
+            EndOfTurn();
             //RotatePlayer(direction); // Поворот персонажа
         }
-    }
-
-    bool IsValidMove(Vector3Int position)
-    {
-        return !tilemap.HasTile(position);
-    }
-
-    void UpdatePlayerPosition()
-    {
-        transform.position = tilemap.GetCellCenterWorld(currentGridPosition);
     }
 
     // void RotatePlayer(Vector3Int direction)
@@ -88,10 +79,11 @@ public class Player : MonoBehaviour
     //     transform.eulerAngles = new Vector3(0, 0, angle);
     // }
 
-    void PlayerDeath()
+    public override void Death()
     {
      GameOver.SetActive(true);
      MyTurn = false;   
+     AllActors.Clear();
     }
 
 }

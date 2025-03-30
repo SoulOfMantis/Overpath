@@ -1,53 +1,35 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-    public class RobotController : MonoBehaviour
+    public class RobotController : Actor
 {
-    public Vector3Int currentGridPosition; // Текущая позиция в сетке
-    public Vector3Int direction = Vector3Int.up; // Направление взгляда
-    public Tilemap tilemap; // Ссылка на Tilemap
-    public GameObject player;
     private Animator animator;
 
     void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");        
-        animator = GetComponentInChildren<Animator>();
-        // Получаем текущую позицию в сетке и обновляем позицию врага
+    {   animator = GetComponentInChildren<Animator>();    
+        IsPlayer = false;
         currentGridPosition = tilemap.WorldToCell(transform.position);
-        UpdateEnemyPosition();
+        UpdatePosition();
+        AllActors[currentGridPosition] = this;
+        foreach (var m in GameObject.FindGameObjectsWithTag("Interactable"))
+            Interactable[tilemap.WorldToCell(m.transform.position)] = m.GetComponent<InteractableObject>();
     }
 
-
-
-    void UpdateEnemyPosition()
-    {
-        // Обновляем позицию робота в мире на основе текущей позиции в сетке
-        transform.position = tilemap.GetCellCenterWorld(currentGridPosition);
-    }
-    // void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Player"))
-    //     {
-    //         other.gameObject.SendMessage("PlayerDeath");
-    //     }
-    // }
     public void Step()
     {
         Vector3Int newPosition = currentGridPosition + direction;
+        if (AllActors.ContainsKey(newPosition))
+        AllActors[newPosition].Death();
         if (IsValidMove(newPosition))
-        {
+        {   
+            AllActors.Remove(currentGridPosition);         
             currentGridPosition = newPosition;
-            UpdateEnemyPosition();
-            if (player.transform.position == tilemap.GetCellCenterWorld(newPosition))
-                player.SendMessage("PlayerDeath");
+            AllActors[currentGridPosition] = this;
+            UpdatePosition();
             SetAnimatorDirection(GetDirectionInt());
         }
     }
-    public bool IsValidMove(Vector3Int position)
-    {
-        return !tilemap.HasTile(position);
-    }
+
     public void Rotate()
     {
         if (direction == Vector3Int.up) direction = Vector3Int.right;
@@ -61,7 +43,11 @@ using UnityEngine.Tilemaps;
         animator.SetInteger("Vector", direction);
     }
 
-    
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        collision.GetComponent<Actor>().Death();    
+    }
+
     int GetDirectionInt()
     {
         if (direction == Vector3Int.up) return 1;   // Вверх
