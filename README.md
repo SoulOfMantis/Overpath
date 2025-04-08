@@ -19,4 +19,6 @@
 - Терминал - [Foozle - Sci-Fi Lab: Tileset/Decor/Traps (itch.io)](https://foozlecc.itch.io/sci-fi-lab-tileset-decor-traps)
 - Пол - [Anokolisa - Dungeon Crawler PixelArt Asset Pack (itch.io)](https://anokolisa.itch.io/dungeon-crawler-pixel-art-asset-pack)
 - Silent GUI - (https://prinbles.itch.io/silent)
+- Робот - (https://rpgmaker.ru/forum/grafika/38690-ishchu-charsety-robotov) (взят с форума)
+- Игрок - (https://bigwebs.ru/pixel-sprite/) (прямой ссылки на спрайт нет)
 
