@@ -11,7 +11,7 @@ public class IntBlockInputField : MonoBehaviour
     {
         Field.text = LinkedBlock.n.ToString();
     }
-    void nValueChange()
+    public void OnValueChanged()
     {
         if (int.TryParse(Field.text, out int NewN))
         {

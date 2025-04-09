@@ -22,6 +22,12 @@ public class IfBlock : InternalBlock
             condition = robotController.tilemap.HasTile(SearchedPosition);
             break;
         }
+        
+        case "Существо":
+        {
+            condition = Actor.AllActors.ContainsKey(SearchedPosition);
+            break;
+        }
         // case "Человек":
         // {
         //     condition = ;

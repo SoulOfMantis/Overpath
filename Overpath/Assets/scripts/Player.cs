@@ -1,12 +1,8 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Player : MonoBehaviour
+public class Player : Actor
 {
-    private Vector3Int currentGridPosition;
-    public Tilemap tilemap;
-    public GameObject[] Robots;
-    public GameObject[] Interactable;
     public GameObject GameOver;
     Vector3Int dir = Vector3Int.down; // Более явное начальное значение
     public bool MyTurn = true;
@@ -19,17 +15,18 @@ public class Player : MonoBehaviour
         if (animator == null)
         {
             Debug.LogError("Animator not found on Player_Sprite!");
-        }
-
-        currentGridPosition = tilemap.WorldToCell(transform.position);
-        UpdatePlayerPosition();
-        Robots = GameObject.FindGameObjectsWithTag("Enemy");
-        Interactable = GameObject.FindGameObjectsWithTag("Interactable");
+        }        
         
         // Получаем начальное направление анимации
         int initialDirection = GetDirectionInt();
         Debug.Log("Initial direction: " + initialDirection);
         UpdateAnimatorDirection(initialDirection);
+        IsPlayer = true;
+        currentGridPosition = tilemap.WorldToCell(transform.position);
+        UpdatePosition();
+        AllActors[currentGridPosition] = this;
+        foreach (var m in GameObject.FindGameObjectsWithTag("Interactable"))
+            Interactable[tilemap.WorldToCell(m.transform.position)] = m.GetComponent<InteractableObject>();
     }
 
     void Update()
@@ -47,23 +44,25 @@ public class Player : MonoBehaviour
 
     void Interact()
     {
-        Vector3Int newPosition = currentGridPosition + dir;
-        foreach (var Object in Interactable)
-            if (Object.transform.position == tilemap.GetCellCenterWorld(newPosition))
-            {
-                Object.SendMessage("Interacted");
-                EndOfTurn();
-                break;
-            }
+    Vector3Int newPosition = currentGridPosition + direction;
+    if (Interactable.ContainsKey(newPosition))
+        {
+            Interactable[newPosition].Interacted();
+            EndOfTurn();
+        }
     }
 
     public void EndOfTurn()
     {
         MyTurn = false;
 
-        foreach (GameObject robot in Robots)
+        foreach (var robot in AllActors.Values)
         {
-            robot.SendMessage("ExecuteCurrentCommand");
+            if (!robot.IsPlayer)  
+            {
+                robot.gameObject.SendMessage("ExecuteCurrentCommand");
+                if (robot.currentGridPosition == currentGridPosition) Death();
+            }
         }
     }
 
@@ -74,9 +73,11 @@ public class Player : MonoBehaviour
         dir = direction;
         if (IsValidMove(newPosition))
         {
-            EndOfTurn();
+            AllActors.Remove(currentGridPosition);
             currentGridPosition = newPosition;
-            UpdatePlayerPosition();
+            AllActors[currentGridPosition] = this;
+            UpdatePosition();
+            EndOfTurn();
 
             // Получаем направление анимации после движения
             int newDirection = GetDirectionInt();
@@ -84,21 +85,11 @@ public class Player : MonoBehaviour
             UpdateAnimatorDirection(newDirection);
         }
     }
-
-    bool IsValidMove(Vector3Int position)
+    public override void Death()
     {
-        return !tilemap.HasTile(position);
-    }
-
-    void UpdatePlayerPosition()
-    {
-        transform.position = tilemap.GetCellCenterWorld(currentGridPosition);
-    }
-
-    void PlayerDeath()
-    {
-        GameOver.SetActive(true);
-        MyTurn = false;
+     GameOver.SetActive(true);
+     MyTurn = false;   
+     AllActors.Clear();
     }
 
     int GetDirectionInt()
