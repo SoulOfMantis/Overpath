@@ -4,10 +4,23 @@ using UnityEngine.Tilemaps;
 public class Player : Actor
 {
     public GameObject GameOver;
+    Vector3Int dir = Vector3Int.down; // Более явное начальное значение
     public bool MyTurn = true;
-    public SpriteRenderer spriteRenderer; // Компонент для управления спрайтом
+    public SpriteRenderer spriteRenderer;
+    private Animator animator;
+
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+        if (animator == null)
+        {
+            Debug.LogError("Animator not found on Player_Sprite!");
+        }        
+        
+        // Получаем начальное направление анимации
+        int initialDirection = GetDirectionInt();
+        Debug.Log("Initial direction: " + initialDirection);
+        UpdateAnimatorDirection(initialDirection);
         IsPlayer = true;
         currentGridPosition = tilemap.WorldToCell(transform.position);
         UpdatePosition();
@@ -39,8 +52,8 @@ public class Player : Actor
         }
     }
 
-     public void EndOfTurn()
-     {
+    public void EndOfTurn()
+    {
         MyTurn = false;
 
         foreach (var robot in AllActors.Values)
@@ -51,13 +64,13 @@ public class Player : Actor
                 if (robot.currentGridPosition == currentGridPosition) Death();
             }
         }
-     }
+    }
 
-
-    void Move(Vector3Int dir)
-    {        
-        Vector3Int newPosition = currentGridPosition + dir;
-        direction = dir;
+    void Move(Vector3Int direction)
+    {
+        Debug.Log("Move direction: " + direction);
+        Vector3Int newPosition = currentGridPosition + direction;
+        dir = direction;
         if (IsValidMove(newPosition))
         {
             AllActors.Remove(currentGridPosition);
@@ -65,20 +78,13 @@ public class Player : Actor
             AllActors[currentGridPosition] = this;
             UpdatePosition();
             EndOfTurn();
-            //RotatePlayer(direction); // Поворот персонажа
+
+            // Получаем направление анимации после движения
+            int newDirection = GetDirectionInt();
+            Debug.Log("New direction: " + newDirection);
+            UpdateAnimatorDirection(newDirection);
         }
     }
-
-    // void RotatePlayer(Vector3Int direction)
-    // {
-    //     float angle = 0f;
-    //     if (direction == Vector3Int.up) angle = 90;
-    //     else if (direction == Vector3Int.down) angle = 270f;
-    //     else if (direction == Vector3Int.left) angle = 180f;
-    //     else if (direction == Vector3Int.right) angle = 360f;
-    //     transform.eulerAngles = new Vector3(0, 0, angle);
-    // }
-
     public override void Death()
     {
      GameOver.SetActive(true);
@@ -86,4 +92,19 @@ public class Player : Actor
      AllActors.Clear();
     }
 
+    int GetDirectionInt()
+    {
+        if (dir == Vector3Int.up) return 1;
+        else if (dir == Vector3Int.right) return 2;
+        else if (dir == Vector3Int.down) return 3;
+        else if (dir == Vector3Int.left) return 4;
+        Debug.LogWarning("Unknown direction, defaulting to down");
+        return 3; // Вниз по умолчанию
+    }
+
+    void UpdateAnimatorDirection(int direction)
+    {
+        Debug.Log("Setting animator direction to: " + direction);
+        animator.SetInteger("Vector", direction);
+    }
 }

@@ -11,8 +11,6 @@ using UnityEngine.Tilemaps;
         currentGridPosition = tilemap.WorldToCell(transform.position);
         UpdatePosition();
         AllActors[currentGridPosition] = this;
-        foreach (var m in GameObject.FindGameObjectsWithTag("Interactable"))
-            Interactable[tilemap.WorldToCell(m.transform.position)] = m.GetComponent<InteractableObject>();
     }
 
     public void Step()
