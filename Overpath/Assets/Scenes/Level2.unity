@@ -23552,9 +23552,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 410153513}
+      - m_Target: {fileID: 410153514}
         m_TargetAssemblyTypeName: NewButtonContoller, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Next
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
