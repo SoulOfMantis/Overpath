@@ -12,12 +12,9 @@ public class TerminalUI : MonoBehaviour
     {
         CloseButton.onClick.AddListener(Close);
     }
-
-
     void Close()
     {
-        var player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        player.EndOfTurn();
+        Algorithm.player.EndOfTurn();
         gameObject.SetActive(false);
     }
 }

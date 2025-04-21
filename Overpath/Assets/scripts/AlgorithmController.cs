@@ -19,7 +19,6 @@ public class AlgorithmController : MonoBehaviour
         if (currentLine >= commandBlocks.Length)
             currentLine = 0;
         commandBlocks[currentLine].Execute(ref currentLine, robotController);
-        player.MyTurn = true;
     }
     
     public void SwapBlocksAndPanels(int indexA, int indexB)

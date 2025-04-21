@@ -24,7 +24,7 @@ public class Player : Actor
         IsPlayer = true;
         currentGridPosition = tilemap.WorldToCell(transform.position);
         UpdatePosition();
-        AllActors[currentGridPosition] = this;
+        AllActors.Add(this);
         foreach (var m in GameObject.FindGameObjectsWithTag("Interactable"))
             Interactable[tilemap.WorldToCell(m.transform.position)] = m.GetComponent<InteractableObject>();
     }
@@ -44,11 +44,11 @@ public class Player : Actor
 
     void Interact()
     {
-    Vector3Int newPosition = currentGridPosition + direction;
+    Vector3Int newPosition = currentGridPosition + dir;
     if (Interactable.ContainsKey(newPosition))
         {
             Interactable[newPosition].Interacted();
-            EndOfTurn();
+            //EndOfTurn();
         }
     }
 
@@ -56,14 +56,14 @@ public class Player : Actor
     {
         MyTurn = false;
 
-        foreach (var robot in AllActors.Values)
-        {
-            if (!robot.IsPlayer)  
+        for (int i = 0; i < AllActors.Count; i++)
+            if (!AllActors[i].IsPlayer && !Dead.Contains(i))  
             {
-                robot.gameObject.SendMessage("ExecuteCurrentCommand");
-                if (robot.currentGridPosition == currentGridPosition) Death();
-            }
-        }
+                if (AllActors[i].currentGridPosition == currentGridPosition) Death();
+                AllActors[i].gameObject.SendMessage("ExecuteCurrentCommand");
+            }         
+        FinalDeath();           
+        MyTurn = true;
     }
 
     void Move(Vector3Int direction)
@@ -73,9 +73,7 @@ public class Player : Actor
         dir = direction;
         if (IsValidMove(newPosition))
         {
-            AllActors.Remove(currentGridPosition);
             currentGridPosition = newPosition;
-            AllActors[currentGridPosition] = this;
             UpdatePosition();
             EndOfTurn();
 
@@ -87,9 +85,9 @@ public class Player : Actor
     }
     public override void Death()
     {
-     GameOver.SetActive(true);
-     MyTurn = false;   
-     AllActors.Clear();
+        GameOver.SetActive(true);
+        MyTurn = false;   
+        AllActors.Clear();
     }
 
     int GetDirectionInt()

@@ -25,7 +25,12 @@ public class IfBlock : InternalBlock
         
         case "Существо":
         {
-            condition = Actor.AllActors.ContainsKey(SearchedPosition);
+            condition = false;
+            
+            foreach (var actor in Actor.AllActors)
+            if (actor.currentGridPosition == SearchedPosition)
+            condition = true;
+
             break;
         }
         // case "Человек":
