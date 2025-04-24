@@ -5,33 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class NewButtonContoller : MonoBehaviour
 {
-    private Player player;
-    public void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();    
-    }
     public void Respawn()
     {
-        Actor.AllActors.Clear();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        AudioManager.instance.Play("Click");
     }
     public void Menu()
     {
-        Actor.AllActors.Clear();
         SceneManager.LoadScene(0);
+        AudioManager.instance.Play("Click");
     }
     public void Next()
     {
-        Actor.AllActors.Clear();   
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        AudioManager.instance.Play("Click");
     }
     public void PauseGame()
     {
+        var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         player.MyTurn = false;
+        AudioManager.instance.Play("Click");
     }
     public void Continue()
     {
+        var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         player.MyTurn = true;
+        AudioManager.instance.Play("Click");
     }
     public void Exit()
     {
