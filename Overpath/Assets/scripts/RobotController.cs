@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 
     void Start()
     {   animator = GetComponentInChildren<Animator>();    
+        SetAnimatorDirection(GetDirectionInt());
         IsPlayer = false;
         currentGridPosition = tilemap.WorldToCell(transform.position);
         UpdatePosition();
@@ -26,7 +27,6 @@ using UnityEngine.Tilemaps;
         {   
             currentGridPosition = newPosition;
             UpdatePosition();
-            SetAnimatorDirection(GetDirectionInt());
         }
     }
 

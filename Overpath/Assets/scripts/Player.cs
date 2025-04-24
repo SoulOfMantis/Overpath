@@ -48,7 +48,7 @@ public class Player : Actor
     if (Interactable.ContainsKey(newPosition))
         {
             Interactable[newPosition].Interacted();
-            //EndOfTurn();
+            MyTurn = false;
         }
     }
 
@@ -71,16 +71,13 @@ public class Player : Actor
         Debug.Log("Move direction: " + direction);
         Vector3Int newPosition = currentGridPosition + direction;
         dir = direction;
+        UpdateAnimatorDirection(GetDirectionInt());
+        
         if (IsValidMove(newPosition))
         {
             currentGridPosition = newPosition;
             UpdatePosition();
-            EndOfTurn();
-
-            // Получаем направление анимации после движения
-            int newDirection = GetDirectionInt();
-            Debug.Log("New direction: " + newDirection);
-            UpdateAnimatorDirection(newDirection);
+            EndOfTurn();            
         }
     }
     public override void Death()
