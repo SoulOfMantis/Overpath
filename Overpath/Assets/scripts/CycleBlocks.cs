@@ -6,16 +6,14 @@ public class LoopBlock : InternalIntBlock
 
     public override void Execute(ref int currentLine, RobotController robotController)
     {
-        if (i < n)
-        {
-            ExecuteNestedBlocks(ref currentLine, robotController);
-            i++;
-        }
-        else
+        ExecuteNestedBlocks(ref currentLine, robotController);
+        i++;
+        
+        if (i == n)
         {
             i = 0;
             currentLine++;
-        }
+        }        
     }
 }
 

@@ -7,24 +7,26 @@ using UnityEngine.Tilemaps;
 
     void Start()
     {   animator = GetComponentInChildren<Animator>();    
+        SetAnimatorDirection(GetDirectionInt());
         IsPlayer = false;
         currentGridPosition = tilemap.WorldToCell(transform.position);
         UpdatePosition();
-        AllActors[currentGridPosition] = this;
+        AllActors.Add(this);
     }
 
     public void Step()
     {
         Vector3Int newPosition = currentGridPosition + direction;
-        if (AllActors.ContainsKey(newPosition))
-        AllActors[newPosition].Death();
+        foreach (var actor in AllActors)
+        if (actor.currentGridPosition == newPosition)
+        {
+            actor.Death();
+            break;
+        }
         if (IsValidMove(newPosition))
         {   
-            AllActors.Remove(currentGridPosition);         
             currentGridPosition = newPosition;
-            AllActors[currentGridPosition] = this;
             UpdatePosition();
-            SetAnimatorDirection(GetDirectionInt());
         }
     }
 
@@ -41,10 +43,10 @@ using UnityEngine.Tilemaps;
         animator.SetInteger("Vector", direction);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        collision.GetComponent<Actor>().Death();    
-    }
+    // void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     collision.GetComponent<Actor>().Death();    
+    // }
 
     int GetDirectionInt()
     {

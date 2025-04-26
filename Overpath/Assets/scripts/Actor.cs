@@ -8,7 +8,8 @@ public class Actor : MonoBehaviour
     public Vector3Int currentGridPosition;
     public Tilemap tilemap;
     public bool IsPlayer;
-    public static Dictionary< Vector3Int, Actor> AllActors = new();
+    public static List<int> Dead = new();
+    public static List<Actor> AllActors = new();
     public static Dictionary< Vector3Int, InteractableObject> Interactable = new();
     public Vector3Int direction; // Направление взгляда
     
@@ -19,12 +20,24 @@ public class Actor : MonoBehaviour
 
     public bool IsValidMove(Vector3Int position)
     {
-        return !tilemap.HasTile(position) ;
+        return !tilemap.HasTile(position);
     }
-    
     public virtual void Death()
     {
-        AllActors.Remove(currentGridPosition);
-        gameObject.SetActive(false);
+        Dead.Add(AllActors.FindIndex(x => x == this));
+    }
+
+    public void FinalDeath()
+    {
+        Dead.Sort();
+        Dead.Reverse();
+        foreach (var ind in Dead)
+        {
+            var r = AllActors[ind];
+            Debug.Log($"Робот номер {ind} умер!");            
+            AllActors.Remove(r);
+            r.gameObject.SetActive(false);
+        }
+        Dead.Clear();
     }
 }
