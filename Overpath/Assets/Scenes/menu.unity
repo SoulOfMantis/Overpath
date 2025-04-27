@@ -562,8 +562,6 @@ RectTransform:
   - {fileID: 1240123181}
   - {fileID: 1530120995}
   - {fileID: 1410429844}
-  - {fileID: 751265304}
-  - {fileID: 2114526491}
   m_Father: {fileID: 1875711749}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1119,16 +1117,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751265303}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 318998263}
+  m_Father: {fileID: 1530120995}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -402, y: 0}
+  m_AnchoredPosition: {x: -402, y: -22.500004}
   m_SizeDelta: {x: 452.67, y: 107}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &751265305
@@ -2508,6 +2506,7 @@ RectTransform:
   m_Children:
   - {fileID: 389803328}
   - {fileID: 896902598}
+  - {fileID: 2114526491}
   m_Father: {fileID: 318998263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2664,7 +2663,7 @@ GameObject:
   - component: {fileID: 1530120995}
   - component: {fileID: 1530120994}
   m_Layer: 5
-  m_Name: MasterVolume
+  m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2747,6 +2746,7 @@ RectTransform:
   m_Children:
   - {fileID: 13704972}
   - {fileID: 663848414}
+  - {fileID: 751265304}
   m_Father: {fileID: 318998263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3564,8 +3564,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: c5cba0b9e5cb83a4a827a675f7202615, type: 2}
-  m_audioClip: {fileID: 8300000, guid: d120bdb3bb58af84fb2de8debd014ba6, type: 3}
-  m_Resource: {fileID: 8300000, guid: d120bdb3bb58af84fb2de8debd014ba6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 63d290c37b454fc4a8a749aaa68533ca, type: 3}
+  m_Resource: {fileID: 8300000, guid: 63d290c37b454fc4a8a749aaa68533ca, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3945,16 +3945,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114526490}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 318998263}
+  m_Father: {fileID: 1410429844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -402, y: -114}
+  m_AnchoredPosition: {x: -402, y: 2.5000076}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2114526492

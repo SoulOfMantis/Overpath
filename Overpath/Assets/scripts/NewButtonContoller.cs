@@ -7,16 +7,19 @@ public class NewButtonContoller : MonoBehaviour
 {
     public void Respawn()
     {
+        Actor.AllActors.Clear();//Не ломается после рестарта
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         AudioManager.instance.Play("Click");
     }
     public void Menu()
     {
+        Actor.AllActors.Clear();//
         SceneManager.LoadScene(0);
         AudioManager.instance.Play("Click");
     }
     public void Next()
     {
+        Actor.AllActors.Clear();//
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         AudioManager.instance.Play("Click");
     }
