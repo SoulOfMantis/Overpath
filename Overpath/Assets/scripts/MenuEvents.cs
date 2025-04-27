@@ -22,6 +22,9 @@ public class MenuEvents : MonoBehaviour
     public void SetVolume()
     {
         mixer.SetFloat("MasterVolume", volumeslider.value);
+    }
+    public void SetMusic()
+    {
         mixermusic.SetFloat("Music", MusicSlider.value);
     }
     public void LoadLevel(int index)
