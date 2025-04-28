@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: e7ca700f5d337f646a1c029f0e46e113
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5795244445620079337
+    second: Robot_sprite_yellow_0
+  - first:
+      213: 4013069327673892319
+    second: Robot_sprite_yellow_1
+  - first:
+      213: 2142885786482894522
+    second: Robot_sprite_yellow_2
+  - first:
+      213: -7753623794847464788
+    second: Robot_sprite_yellow_3
+  - first:
+      213: -8452200761842158923
+    second: Robot_sprite_yellow_4
+  - first:
+      213: 6519338241197202565
+    second: Robot_sprite_yellow_5
+  - first:
+      213: 1052630035668113717
+    second: Robot_sprite_yellow_6
+  - first:
+      213: -6583801646067321250
+    second: Robot_sprite_yellow_7
+  - first:
+      213: 8348577568267455841
+    second: Robot_sprite_yellow_8
+  - first:
+      213: 7602680567725216463
+    second: Robot_sprite_yellow_9
+  - first:
+      213: 8974448686900839304
+    second: Robot_sprite_yellow_10
+  - first:
+      213: 1468449187523350436
+    second: Robot_sprite_yellow_11
+  - first:
+      213: 7001138020451703404
+    second: Robot_sprite_yellow_12
+  - first:
+      213: 1522737066891113017
+    second: Robot_sprite_yellow_13
+  - first:
+      213: -7800092187973914038
+    second: Robot_sprite_yellow_14
+  - first:
+      213: -6051081937083037706
+    second: Robot_sprite_yellow_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 194
+        width: 42
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ea8db76e18dc6050800000000000000
+      internalID: 5795244445620079337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 195
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdd94079a4941b730800000000000000
+      internalID: 4013069327673892319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_2
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 194
+        width: 42
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab6eb81f44f0dbd10800000000000000
+      internalID: 2142885786482894522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 195
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca2c9123d38956490800000000000000
+      internalID: -7753623794847464788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_4
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 130
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b2bc145030c3ba80800000000000000
+      internalID: -8452200761842158923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_5
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 128
+        width: 39
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58cdd25e697597a50800000000000000
+      internalID: 6519338241197202565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_6
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 130
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53997ebb071bb9e00800000000000000
+      internalID: 1052630035668113717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_7
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 128
+        width: 39
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e56768e0943a1a4a0800000000000000
+      internalID: -6583801646067321250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_8
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 66
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16d4060d01b1cd370800000000000000
+      internalID: 8348577568267455841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_9
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 64
+        width: 39
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc2d60412b5228960800000000000000
+      internalID: 7602680567725216463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_10
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 66
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88302b53885ab8c70800000000000000
+      internalID: 8974448686900839304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_11
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 64
+        width: 39
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4af4a0181caf06410800000000000000
+      internalID: 1468449187523350436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_12
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 4
+        width: 38
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6a518c9fe9092160800000000000000
+      internalID: 7001138020451703404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_13
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 4
+        width: 38
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9327d566b49d12510800000000000000
+      internalID: 1522737066891113017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_14
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 4
+        width: 38
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a42f3805b7180c390800000000000000
+      internalID: -7800092187973914038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_sprite_yellow_15
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 4
+        width: 38
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f70269c90d360ca0800000000000000
+      internalID: -6051081937083037706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Robot_sprite_yellow_0: 5795244445620079337
+      Robot_sprite_yellow_1: 4013069327673892319
+      Robot_sprite_yellow_10: 8974448686900839304
+      Robot_sprite_yellow_11: 1468449187523350436
+      Robot_sprite_yellow_12: 7001138020451703404
+      Robot_sprite_yellow_13: 1522737066891113017
+      Robot_sprite_yellow_14: -7800092187973914038
+      Robot_sprite_yellow_15: -6051081937083037706
+      Robot_sprite_yellow_2: 2142885786482894522
+      Robot_sprite_yellow_3: -7753623794847464788
+      Robot_sprite_yellow_4: -8452200761842158923
+      Robot_sprite_yellow_5: 6519338241197202565
+      Robot_sprite_yellow_6: 1052630035668113717
+      Robot_sprite_yellow_7: -6583801646067321250
+      Robot_sprite_yellow_8: 8348577568267455841
+      Robot_sprite_yellow_9: 7602680567725216463
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
