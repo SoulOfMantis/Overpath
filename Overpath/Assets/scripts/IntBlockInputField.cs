@@ -17,7 +17,6 @@ public class IntBlockInputField : MonoBehaviour
         {
             if (NewN > 0 && terminalUI.Algorithm.ChangeOfAlgorithm())            
                 LinkedBlock.n = NewN;
-            
         }
     }
 }

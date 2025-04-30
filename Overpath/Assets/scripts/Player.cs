@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 public class Player : Actor
 {
     public GameObject GameOver;
-    Vector3Int dir = Vector3Int.down; // Более явное начальное значение
+    public Vector3Int dir = Vector3Int.down; // Более явное начальное значение
     public bool MyTurn = true;
     public SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -61,8 +61,11 @@ public class Player : Actor
             {
                 if (AllActors[i].currentGridPosition == currentGridPosition) Death();
                 AllActors[i].gameObject.SendMessage("ExecuteCurrentCommand");
+                Debug.Log($"Отправлено сообщение роботу {i}");
             }         
         FinalDeath();           
+        foreach (var b in allButtons)
+            b.EvaluateButton();
         MyTurn = true;
     }
 

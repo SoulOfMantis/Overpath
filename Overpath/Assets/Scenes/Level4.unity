@@ -2200,7 +2200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c4e894a9d522c4b8234be6c0f84b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockName: "\u0415\u0441\u043B\u0438 \u0432\u043F\u0435\u0440\u0435\u0434\u0438"
+  blockName: If forward
   nestedBlocks:
   - {fileID: 1560985848}
   nestedPanels: []
@@ -4471,6 +4471,7 @@ MonoBehaviour:
   IsPlayer: 1
   direction: {x: 0, y: 0, z: 0}
   GameOver: {fileID: 1964862500}
+  dir: {x: 0, y: -1, z: 0}
   MyTurn: 1
   spriteRenderer: {fileID: 912581147}
 --- !u!1 &989985606
@@ -5067,13 +5068,27 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: "\u041E\u0431\u044A\u0435\u043A\u0442"
+    - m_Text: Obstacle
       m_Image: {fileID: 0}
-    - m_Text: "\u041F\u0440\u0435\u043F\u044F\u0442\u0441\u0442\u0432\u0438\u0435"
+    - m_Text: Wall
+      m_Image: {fileID: 0}
+    - m_Text: Creature
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 820600142}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SendMessage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ChangeOfAlforithm
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1144518920
 MonoBehaviour:
@@ -5209,7 +5224,7 @@ MonoBehaviour:
   text: {fileID: 716886628}
   UpButton: {fileID: 122523256}
   DownButton: {fileID: 801579175}
-  BlockNumber: 1
+  BlockNumber: 0
   gap: 10
 --- !u!114 &1299732397
 MonoBehaviour:
@@ -8051,7 +8066,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041E\u0431\u044A\u0435\u043A\u0442"
+  m_Text: Obstacle
 --- !u!222 &1638119033
 CanvasRenderer:
   m_ObjectHideFlags: 0

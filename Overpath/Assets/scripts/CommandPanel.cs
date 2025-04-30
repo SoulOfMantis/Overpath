@@ -23,11 +23,9 @@ public class CommandPanel : MonoBehaviour
 
     void BlockUpdate(int dir)
     {
-        int newIndex = BlockNumber + dir;
-        Algorithm.SwapBlocksAndPanels(BlockNumber, newIndex);
-        
-        Algorithm.ChangeOfAlgorithm();
-
+        int newIndex = BlockNumber + dir;        
+        if (Algorithm.ChangeOfAlgorithm())
+            Algorithm.SwapBlocksAndPanels(BlockNumber, newIndex);
         UpdatePanelPositions();
     }
     void UpdatePanelPositions()
