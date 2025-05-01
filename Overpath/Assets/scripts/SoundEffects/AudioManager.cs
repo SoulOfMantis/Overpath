@@ -2,22 +2,23 @@ using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : MonoBehaviour
+{
 
 	public static AudioManager instance;
 
 	public Sound[] sounds;
-
-	void Awake ()
+	void Awake()
 	{
-        if (instance != null)
+		if (instance != null)
 		{
 			Destroy(gameObject);
 			return;
-		} else
+		}
+		else
 		{
 			instance = this;
-			DontDestroyOnLoad(gameObject);
+			//DontDestroyOnLoad(gameObject);
 		}
 
 		foreach (Sound s in sounds)
@@ -27,9 +28,9 @@ public class AudioManager : MonoBehaviour {
 			s.source.volume = s.volume;
 			s.source.pitch = s.pitch;
 			s.source.loop = s.loop;
-            s.source.outputAudioMixerGroup = s.mixer;//
-        }
-    }
+			s.source.outputAudioMixerGroup = s.mixer;//
+		}
+	}
 
 	public void Play(string sound)
 	{
@@ -41,5 +42,4 @@ public class AudioManager : MonoBehaviour {
 		Sound s = Array.Find(sounds, item => item.name == sound);
 		s.source.Stop();
 	}
-
 }

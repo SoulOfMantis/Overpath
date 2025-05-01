@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PressureButton : MonoBehaviour
 {
     public Vector3Int buttonPosition;
+    public Tilemap tilemap;
 
     public List<GameObject> State1Objects; // Активны по умолчанию
     public List<GameObject> State2Objects; // Активны при нажатии
@@ -15,8 +17,25 @@ public class PressureButton : MonoBehaviour
 
     void Start()
     {
-        buttonPosition = ActorManager.Instance.tilemap.WorldToCell(transform.position);
-        ActorManager.Instance.allButtons.Add(this);
+        buttonPosition = tilemap.WorldToCell(transform.position);
+        transform.position = tilemap.GetCellCenterWorld(buttonPosition);
+        Actor.allButtons.Add(this);
+
+        foreach (var obj in State1Objects)
+        {
+            State1Positions.Add(tilemap.WorldToCell(obj.transform.position));
+            obj.SetActive(true);
+        }
+
+        foreach (var obj in State2Objects)
+        {
+            State2Positions.Add(tilemap.WorldToCell(obj.transform.position));
+            obj.SetActive(false);
+        }
+
+        foreach (var pos in State1Positions)
+        Obstacle.Add(pos);
+
     }
 
     public void EvaluateButton()
