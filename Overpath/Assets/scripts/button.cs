@@ -22,10 +22,16 @@ public class PressureButton : MonoBehaviour
         Actor.allButtons.Add(this);
 
         foreach (var obj in State1Objects)
-        State1Positions.Add(tilemap.WorldToCell(obj.transform.position));
+        {
+            State1Positions.Add(tilemap.WorldToCell(obj.transform.position));
+            obj.SetActive(true);
+        }
 
         foreach (var obj in State2Objects)
-        State2Positions.Add(tilemap.WorldToCell(obj.transform.position));
+        {
+            State2Positions.Add(tilemap.WorldToCell(obj.transform.position));
+            obj.SetActive(false);
+        }
 
         foreach (var pos in State1Positions)
         Obstacle.Add(pos);

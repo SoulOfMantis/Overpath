@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a704216aa02a5cd4e931de89bda684f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockName: Rush
+  blockName: Rush 3
   n: 3
 --- !u!1 &357813055
 GameObject:
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c4e894a9d522c4b8234be6c0f84b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockName: If fw
+  blockName: If forward
   nestedBlocks:
   - {fileID: 1560985848}
   nestedPanels: []
@@ -2818,7 +2818,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -129, y: -52.439995}
+  m_AnchoredPosition: {x: -102.01, y: -39}
   m_SizeDelta: {x: 289.77, y: 151.12}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &691011868
@@ -6507,7 +6507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2077167c8acc0ff4ea8a281868cf28a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockName: Rotate 1
+  blockName: Rotate right 1
   n: 1
 --- !u!114 &1560985849
 MonoBehaviour:
@@ -6930,7 +6930,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 7
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7045,10 +7045,10 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 492b241c7ed5ba248a2dd9e0c4251ff3, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: -7887933763550971455, guid: bbfecb25faf42e44f8426c8710c03e1e, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -7887933763550971455, guid: bbfecb25faf42e44f8426c8710c03e1e, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: -1953294546, guid: 47c3af7e33a60ca42bec4ea9620b8829, type: 3}
   - m_RefCount: 2
@@ -7512,7 +7512,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041E\u0431\u044A\u0435\u043A\u0442"
+  m_Text: Obstacle
 --- !u!222 &1638119033
 CanvasRenderer:
   m_ObjectHideFlags: 0

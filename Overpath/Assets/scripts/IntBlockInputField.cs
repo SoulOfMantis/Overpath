@@ -11,11 +11,11 @@ public class IntBlockInputField : MonoBehaviour
     {
         Field.text = LinkedBlock.n.ToString();
     }
-    public void OnValueChanged()
+    public void ValueChange()
     {
         if (int.TryParse(Field.text, out int NewN))
         {
-            if (NewN > 0 && terminalUI.Algorithm.ChangeOfAlgorithm())            
+            if ((NewN != LinkedBlock.n) && (NewN > 0) && terminalUI.Algorithm.ChangeOfAlgorithm())            
                 LinkedBlock.n = NewN;
         }
     }
