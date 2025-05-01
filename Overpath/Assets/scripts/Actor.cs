@@ -14,6 +14,15 @@ public class Actor : MonoBehaviour
     public static Dictionary<Vector3Int, InteractableObject> Interactable = new();
     public Vector3Int direction; // Направление взгляда
     
+    public static void ClearAll()
+    {
+        Dead.Clear();
+        AllActors.Clear();
+        allButtons.Clear();
+        Interactable.Clear();
+        Obstacle.blockedPositions.Clear();
+    }
+
     public void UpdatePosition()
     {
         transform.position = tilemap.GetCellCenterWorld(currentGridPosition);
