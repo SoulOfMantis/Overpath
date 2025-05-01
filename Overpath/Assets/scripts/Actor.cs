@@ -11,7 +11,7 @@ public class Actor : MonoBehaviour
     public static List<int> Dead = new();
     public static List<Actor> AllActors = new();
     public static List<PressureButton> allButtons = new List<PressureButton>();
-    public static Dictionary< Vector3Int, InteractableObject> Interactable = new();
+    public static Dictionary<Vector3Int, InteractableObject> Interactable = new();
     public Vector3Int direction; // Направление взгляда
     
     public void UpdatePosition()

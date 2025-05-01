@@ -4,11 +4,14 @@ using UnityEngine.Tilemaps;
 public class Terminal : InteractableObject 
 {
     public GameObject TerminalUI;
+    public Vector3Int currentGridPosition;
     public Tilemap tilemap;
 
     void Start()
     {
-        transform.position = tilemap.GetCellCenterWorld(tilemap.WorldToCell(transform.position));
+        currentGridPosition = tilemap.WorldToCell(transform.position);
+        transform.position = tilemap.GetCellCenterWorld(currentGridPosition);
+        Obstacle.Add(currentGridPosition);
     }
 
     public override void Interacted()
