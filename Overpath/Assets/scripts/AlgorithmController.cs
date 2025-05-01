@@ -19,6 +19,8 @@ public class AlgorithmController : MonoBehaviour
         if (currentLine >= commandBlocks.Length)
             currentLine = 0;
         commandBlocks[currentLine].Execute(ref currentLine, robotController);
+        
+        Debug.Log($"Походил робот {Actor.AllActors.FindIndex(x => robotController)}");
     }
     
     public void SwapBlocksAndPanels(int indexA, int indexB)
@@ -42,6 +44,7 @@ public class AlgorithmController : MonoBehaviour
         else
         {
             myTerminal.gameObject.SetActive(false);
+            player.EndOfTurn();
             return false;
         }
     }

@@ -11,26 +11,36 @@ public class IfBlock : InternalBlock
     Vector3Int SearchedPosition = robotController.currentGridPosition + robotController.direction;   
     switch (Object.captionText.text)
     {
-        case "Препятствие":
+        case "Obstacle":
         {
             condition = !robotController.IsValidMove(SearchedPosition);
             break;
         }
         
-        case "Объект":
+        case "Wall":
         {
             condition = robotController.tilemap.HasTile(SearchedPosition);
             break;
         }
+
+        case "Object":
+        {
+            condition = Obstacle.IsBlocked(SearchedPosition);
+            break;
+        }
         
-        case "Существо":
+        case "Creature":
         {
             condition = false;
             
             foreach (var actor in Actor.AllActors)
-            if (actor.currentGridPosition == SearchedPosition)
-            condition = true;
-
+            {
+                if (actor.currentGridPosition == SearchedPosition)
+                {
+                    condition = true;
+                    break;
+                }
+            }
             break;
         }
         // case "Человек":

@@ -14,6 +14,7 @@ public class TerminalUI : MonoBehaviour
     }
     void Close()
     {
+        Debug.Log($"Закрыт терминал {Actor.AllActors.FindIndex(x => Algorithm.robotController)}");
         Algorithm.player.EndOfTurn();
         gameObject.SetActive(false);
     }
