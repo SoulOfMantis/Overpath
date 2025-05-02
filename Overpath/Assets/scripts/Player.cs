@@ -5,7 +5,6 @@ using UnityEngine.Tilemaps;
 public class Player : Actor
 {
     public GameObject GameOver;
-    public GameObject PauseMenuScreen;
     public Vector3Int dir = Vector3Int.down; // Более явное начальное значение
     public bool MyTurn = true;
     public SpriteRenderer spriteRenderer;
@@ -41,7 +40,6 @@ public class Player : Actor
             if (Input.GetKeyDown(KeyCode.D)) Move(Vector3Int.right);
             if (Input.GetKeyDown(KeyCode.F)) Interact();
             if (Input.GetKeyDown(KeyCode.Space)) EndOfTurn();
-            if (Input.GetKeyDown(KeyCode.Escape)) PauseMenuScreen.gameObject.SetActive(!PauseMenuScreen.gameObject.activeSelf);
         }
     }
 
