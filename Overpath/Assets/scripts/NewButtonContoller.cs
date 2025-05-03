@@ -13,6 +13,7 @@ public class NewButtonContoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
+            AudioManager.instance.Play("Click");
         }
     }
 
