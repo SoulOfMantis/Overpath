@@ -31,3 +31,8 @@
 - Игрок (https://seikho.github.io/sprite-creator/)
 - Кнопка (...)
 - Блок/препятствие/силовое поле (...)
+- Клик по кнопке - (Был сгенерирован на сайте: https://sfbgames.itch.io/chiptone)
+- Звук победы - (https://drive.google.com/drive/folders/1q_864gDmFKglPdblQhT4vv2ho7-kkcNc)
+- Звук поражения - (https://drive.google.com/drive/folders/1q_864gDmFKglPdblQhT4vv2ho7-kkcNc)
+- Музыка в меню - (написали сами)
+- Музыка на уровнях - (написали сами)
