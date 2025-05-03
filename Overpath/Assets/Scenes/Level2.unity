@@ -2704,6 +2704,7 @@ GameObject:
   - component: {fileID: 452427838}
   - component: {fileID: 452427837}
   - component: {fileID: 452427836}
+  - component: {fileID: 452427839}
   m_Layer: 5
   m_Name: Sign
   m_TagString: Untagged
@@ -2788,19 +2789,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 820600142}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SendMessage
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ChangeOfAlgorithm
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &452427837
 MonoBehaviour:
@@ -2840,6 +2829,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452427834}
   m_CullTransparentMesh: 1
+--- !u!114 &452427839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452427834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95f8cf84e7244d49a4a4d0e2f153945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 452427836}
+  terminalUI: {fileID: 1396045264}
 --- !u!1 &463013787
 GameObject:
   m_ObjectHideFlags: 0
@@ -5919,6 +5922,7 @@ GameObject:
   - component: {fileID: 827000943}
   - component: {fileID: 827000942}
   - component: {fileID: 827000941}
+  - component: {fileID: 827000944}
   m_Layer: 5
   m_Name: Object
   m_TagString: Untagged
@@ -6005,19 +6009,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 820600147}
-        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
-        m_MethodName: SendMessage
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ChangeOfAlgorithm
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &827000942
 MonoBehaviour:
@@ -6057,6 +6049,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827000939}
   m_CullTransparentMesh: 1
+--- !u!114 &827000944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827000939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95f8cf84e7244d49a4a4d0e2f153945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 827000941}
+  terminalUI: {fileID: 835397089}
 --- !u!1 &835397088
 GameObject:
   m_ObjectHideFlags: 0
@@ -8343,6 +8349,7 @@ GameObject:
   - component: {fileID: 1144518921}
   - component: {fileID: 1144518920}
   - component: {fileID: 1144518919}
+  - component: {fileID: 1144518922}
   m_Layer: 5
   m_Name: Object
   m_TagString: Untagged
@@ -8429,19 +8436,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 820600147}
-        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
-        m_MethodName: SendMessage
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ChangeOfAlgorithm
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1144518920
 MonoBehaviour:
@@ -8481,6 +8476,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144518917}
   m_CullTransparentMesh: 1
+--- !u!114 &1144518922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144518917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95f8cf84e7244d49a4a4d0e2f153945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 1144518919}
+  terminalUI: {fileID: 1396045264}
 --- !u!1 &1191572390
 GameObject:
   m_ObjectHideFlags: 0
@@ -16105,6 +16114,7 @@ GameObject:
   - component: {fileID: 2108119589}
   - component: {fileID: 2108119588}
   - component: {fileID: 2108119587}
+  - component: {fileID: 2108119590}
   m_Layer: 5
   m_Name: Sign
   m_TagString: Untagged
@@ -16189,19 +16199,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 820600142}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SendMessage
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ChangeOfAlgorithm
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &2108119588
 MonoBehaviour:
@@ -16241,6 +16239,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108119585}
   m_CullTransparentMesh: 1
+--- !u!114 &2108119590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108119585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95f8cf84e7244d49a4a4d0e2f153945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 2108119587}
+  terminalUI: {fileID: 835397089}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
