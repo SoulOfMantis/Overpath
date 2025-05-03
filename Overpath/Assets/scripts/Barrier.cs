@@ -5,7 +5,7 @@ public class Barrier : MonoBehaviour
     
     public Animator animator;
 
-    private bool IsButton = true;
+    private bool ButtonPressed = false;
 
     public void Start()
     {
@@ -19,7 +19,7 @@ public class Barrier : MonoBehaviour
     /// <param name="Button"></param>
     public void SetBarrier(bool Button)
     {
-        IsButton = Button;
-        animator.SetBool("Control", IsButton);
+        ButtonPressed = Button;
+        animator.SetBool("Control", ButtonPressed);
     }
 }

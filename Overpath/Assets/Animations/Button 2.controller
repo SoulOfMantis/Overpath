@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1107 &-2639728601039140456
+--- !u!1107 &-6400757175095140841
 AnimatorStateMachine:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -10,11 +10,11 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 8097469104558855831}
-    m_Position: {x: 370, y: 30, z: 0}
+    m_State: {fileID: 4741193424514153614}
+    m_Position: {x: 330, y: 30, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 5507924752454594285}
-    m_Position: {x: 350, y: 140, z: 0}
+    m_State: {fileID: 8047328043503061329}
+    m_Position: {x: 330, y: 160, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -24,8 +24,8 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 8097469104558855831}
---- !u!1101 &-1464670887316067438
+  m_DefaultState: {fileID: 8047328043503061329}
+--- !u!1101 &-3208599868447702957
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34,10 +34,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Control
+    m_ConditionEvent: ButtonControl
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 5507924752454594285}
+  m_DstState: {fileID: 4741193424514153614}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -56,10 +56,10 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Barrier 1
+  m_Name: Button 2
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Control
+  - m_Name: ButtonControl
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -68,7 +68,7 @@ AnimatorController:
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
-    m_StateMachine: {fileID: -2639728601039140456}
+    m_StateMachine: {fileID: -6400757175095140841}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -78,18 +78,18 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &5507924752454594285
+--- !u!1102 &4741193424514153614
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Off_Barrier
+  m_Name: Button_On
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 8320091934956528677}
+  - {fileID: 9006589128469192814}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -99,24 +99,24 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b86856557d468a147b6fc9b89662ee3e, type: 2}
+  m_Motion: {fileID: 7400000, guid: 42b22f9e61159c54daa9569373c39211, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &8097469104558855831
+--- !u!1102 &8047328043503061329
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: On_Barrier
+  m_Name: Button_Off
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: -1464670887316067438}
+  - {fileID: -3208599868447702957}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -126,13 +126,13 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0ade6e06138afb544b80d122b5017bcd, type: 2}
+  m_Motion: {fileID: 7400000, guid: d8f61f2aa292aea4dbb3e5048b0ff911, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1101 &8320091934956528677
+--- !u!1101 &9006589128469192814
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,10 +141,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Control
+    m_ConditionEvent: ButtonControl
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 8097469104558855831}
+  m_DstState: {fileID: 8047328043503061329}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
