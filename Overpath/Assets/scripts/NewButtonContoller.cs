@@ -5,6 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class NewButtonContoller : MonoBehaviour
 {
+    public GameObject PauseMenuScreen;
+    public GameObject PauseButton;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
+    }
+
+    public void TogglePause()
+    {
+        bool isPausing = !PauseMenuScreen.activeSelf;
+
+        PauseMenuScreen.SetActive(isPausing);
+        PauseButton.SetActive(!isPausing);
+
+        var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player.MyTurn = !isPausing;
+    }
     public void Respawn()
     {
         Actor.ClearAll();//�� �������� ����� ��������
