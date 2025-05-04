@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -37,7 +36,7 @@ public class Actor : MonoBehaviour
         Dead.Add(AllActors.FindIndex(x => x == this));
     }
 
-    public void FinalDeath()
+    public static void FinalDeath()
     {
         Dead.Sort();
         Dead.Reverse();

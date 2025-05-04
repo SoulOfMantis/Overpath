@@ -3,7 +3,6 @@ using UnityEngine;
 public class Player : Actor
 {
     public GameObject GameOver;
-    public Vector3Int dir = Vector3Int.down; // Более явное начальное значение
     public bool MyTurn = true;
     public SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -43,7 +42,7 @@ public class Player : Actor
 
     void Interact()
     {
-    Vector3Int newPosition = currentGridPosition + dir;
+    Vector3Int newPosition = currentGridPosition + direction;
     if (Interactable.ContainsKey(newPosition))
         {
             Interactable[newPosition].Interacted();
@@ -62,17 +61,20 @@ public class Player : Actor
                 AllActors[i].gameObject.SendMessage("ExecuteCurrentCommand");
                 Debug.Log($"Отправлено сообщение роботу {i}");
             }         
+
         FinalDeath();           
         foreach (var b in allButtons)
             b.EvaluateButton();
+        FinalDeath();
+
         MyTurn = true;
     }
 
-    void Move(Vector3Int direction)
+    void Move(Vector3Int dir)
     {
-        Debug.Log("Move direction: " + direction);
-        Vector3Int newPosition = currentGridPosition + direction;
-        dir = direction;
+        Debug.Log("Move direction: " + dir);
+        Vector3Int newPosition = currentGridPosition + dir;
+        direction = dir;
         UpdateAnimatorDirection(GetDirectionInt());
         
         if (IsValidMove(newPosition))
@@ -86,22 +88,21 @@ public class Player : Actor
     {
         GameOver.SetActive(true);
         MyTurn = false;   
-        AllActors.Clear();
     }
 
     int GetDirectionInt()
     {
-        if (dir == Vector3Int.up) return 1;
-        else if (dir == Vector3Int.right) return 2;
-        else if (dir == Vector3Int.down) return 3;
-        else if (dir == Vector3Int.left) return 4;
+        if (direction == Vector3Int.up) return 1;
+        else if (direction == Vector3Int.right) return 2;
+        else if (direction == Vector3Int.down) return 3;
+        else if (direction == Vector3Int.left) return 4;
         Debug.LogWarning("Unknown direction, defaulting to down");
         return 3; // Вниз по умолчанию
     }
 
-    void UpdateAnimatorDirection(int direction)
+    void UpdateAnimatorDirection(int dir)
     {
-        Debug.Log("Setting animator direction to: " + direction);
-        animator.SetInteger("Vector", direction);
+        Debug.Log("Setting animator direction to: " + dir);
+        animator.SetInteger("Vector", dir);
     }
 }

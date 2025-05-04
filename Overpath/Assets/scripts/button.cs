@@ -72,7 +72,13 @@ public class PressureButton : MonoBehaviour
 
             // Обновляем препятствия
             foreach (var pos in State1Positions) Obstacle.Remove(pos);
-            foreach (var pos in State2Positions) Obstacle.Add(pos);
+            foreach (var pos in State2Positions) 
+            {
+                Obstacle.Add(pos);
+                foreach (var actor in Actor.AllActors)
+                if (actor.currentGridPosition == pos)
+                    actor.Death();
+            }
         }
         else
         {
@@ -80,7 +86,13 @@ public class PressureButton : MonoBehaviour
             foreach (var obj in State2Objects) obj.SetBarrier(false);
 
             foreach (var pos in State2Positions) Obstacle.Remove(pos);
-            foreach (var pos in State1Positions) Obstacle.Add(pos);
+            foreach (var pos in State1Positions) 
+            {
+                Obstacle.Add(pos);
+                foreach (var actor in Actor.AllActors)
+                if (actor.currentGridPosition == pos)
+                    actor.Death();
+            }
         }
     }
 
