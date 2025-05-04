@@ -2270,6 +2270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d4989168869be4385fcd94477901e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PauseMenuScreen: {fileID: 59680122}
+  PauseButton: {fileID: 1941013433}
 --- !u!4 &410153515
 Transform:
   m_ObjectHideFlags: 0
@@ -2558,7 +2560,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -45}
-  m_SizeDelta: {x: 150, y: 150}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &451572365
 MonoBehaviour:
@@ -2690,6 +2692,7 @@ GameObject:
   - component: {fileID: 452427838}
   - component: {fileID: 452427837}
   - component: {fileID: 452427836}
+  - component: {fileID: 452427839}
   m_Layer: 5
   m_Name: Sign
   m_TagString: Untagged
@@ -2774,19 +2777,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 820600142}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SendMessage
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ChangeOfAlgorithm
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &452427837
 MonoBehaviour:
@@ -2826,6 +2817,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452427834}
   m_CullTransparentMesh: 1
+--- !u!114 &452427839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452427834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95f8cf84e7244d49a4a4d0e2f153945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 452427836}
+  terminalUI: {fileID: 1396045264}
 --- !u!1 &463013787
 GameObject:
   m_ObjectHideFlags: 0
@@ -4140,8 +4145,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: 325}
-  m_SizeDelta: {x: 866.72, y: 315.89}
+  m_AnchoredPosition: {x: -0.0000021535, y: 367.18}
+  m_SizeDelta: {x: 1560, y: 345.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &633199363
 MonoBehaviour:
@@ -4190,10 +4195,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 140.9
-  m_fontSizeBase: 36
+  m_fontSize: 160
+  m_fontSizeBase: 160
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 1000
   m_fontStyle: 33
@@ -5905,6 +5910,7 @@ GameObject:
   - component: {fileID: 827000943}
   - component: {fileID: 827000942}
   - component: {fileID: 827000941}
+  - component: {fileID: 827000944}
   m_Layer: 5
   m_Name: Object
   m_TagString: Untagged
@@ -5991,19 +5997,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 820600147}
-        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
-        m_MethodName: SendMessage
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ChangeOfAlgorithm
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &827000942
 MonoBehaviour:
@@ -6043,6 +6037,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827000939}
   m_CullTransparentMesh: 1
+--- !u!114 &827000944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827000939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95f8cf84e7244d49a4a4d0e2f153945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 827000941}
+  terminalUI: {fileID: 835397089}
 --- !u!1 &835397088
 GameObject:
   m_ObjectHideFlags: 0
@@ -8317,6 +8325,7 @@ GameObject:
   - component: {fileID: 1144518921}
   - component: {fileID: 1144518920}
   - component: {fileID: 1144518919}
+  - component: {fileID: 1144518922}
   m_Layer: 5
   m_Name: Object
   m_TagString: Untagged
@@ -8403,19 +8412,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 820600147}
-        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
-        m_MethodName: SendMessage
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ChangeOfAlgorithm
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1144518920
 MonoBehaviour:
@@ -8455,6 +8452,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144518917}
   m_CullTransparentMesh: 1
+--- !u!114 &1144518922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144518917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95f8cf84e7244d49a4a4d0e2f153945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 1144518919}
+  terminalUI: {fileID: 1396045264}
 --- !u!1 &1191572390
 GameObject:
   m_ObjectHideFlags: 0
@@ -8820,8 +8831,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: 325}
-  m_SizeDelta: {x: 866.72, y: 315.89}
+  m_AnchoredPosition: {x: 0.0000022799, y: 347}
+  m_SizeDelta: {x: 1560, y: 317.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1354516701
 MonoBehaviour:
@@ -8870,10 +8881,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 194.55
-  m_fontSizeBase: 36
+  m_fontSize: 160
+  m_fontSizeBase: 160
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 1000
   m_fontStyle: 33
@@ -10497,8 +10508,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 115, y: -45}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchoredPosition: {x: 225, y: -45}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1428838989
 MonoBehaviour:
@@ -12961,8 +12972,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2, y: -61}
-  m_SizeDelta: {x: 787.0864, y: 137.2854}
+  m_AnchoredPosition: {x: 0.0019379, y: -162.14}
+  m_SizeDelta: {x: 2103.9, y: 410.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1677862738
 MonoBehaviour:
@@ -13011,8 +13022,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 160
+  m_fontSizeBase: 160
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13809,8 +13820,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -115, y: -45}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchoredPosition: {x: -225, y: -45}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1839914613
 MonoBehaviour:
@@ -14521,7 +14532,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -6, y: -6}
-  m_SizeDelta: {x: 130, y: 130}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1941013435
 MonoBehaviour:
@@ -14726,7 +14737,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -15451,6 +15462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d4989168869be4385fcd94477901e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PauseMenuScreen: {fileID: 0}
+  PauseButton: {fileID: 0}
 --- !u!1 &2033178541
 GameObject:
   m_ObjectHideFlags: 0
@@ -16053,6 +16066,7 @@ GameObject:
   - component: {fileID: 2108119589}
   - component: {fileID: 2108119588}
   - component: {fileID: 2108119587}
+  - component: {fileID: 2108119590}
   m_Layer: 5
   m_Name: Sign
   m_TagString: Untagged
@@ -16137,19 +16151,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 820600142}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SendMessage
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ChangeOfAlgorithm
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &2108119588
 MonoBehaviour:
@@ -16189,6 +16191,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108119585}
   m_CullTransparentMesh: 1
+--- !u!114 &2108119590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108119585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95f8cf84e7244d49a4a4d0e2f153945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 2108119587}
+  terminalUI: {fileID: 835397089}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
