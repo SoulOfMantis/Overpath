@@ -10,7 +10,6 @@ public class Player : Actor
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        buttonController = FindFirstObjectByType<NewButtonContoller>();
 
         if (animator == null)
         {
