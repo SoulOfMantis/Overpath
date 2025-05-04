@@ -1,24 +1,25 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class Player : Actor
 {
     public GameObject GameOver;
-    public Vector3Int dir = Vector3Int.down; // Более явное начальное значение
+    public Vector3Int dir = Vector3Int.down;
     public bool MyTurn = true;
     public SpriteRenderer spriteRenderer;
     private Animator animator;
+    private NewButtonContoller buttonController;
 
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        buttonController = FindFirstObjectByType<NewButtonContoller>();
+
         if (animator == null)
         {
             Debug.LogError("Animator not found on Player_Sprite!");
-        }        
-        
-        // Получаем начальное направление анимации
+        }
+
         int initialDirection = GetDirectionInt();
         Debug.Log("Initial direction: " + initialDirection);
         UpdateAnimatorDirection(initialDirection);
@@ -32,7 +33,7 @@ public class Player : Actor
 
     void Update()
     {
-        if (MyTurn)
+        if (MyTurn && !GameOver.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.W)) Move(Vector3Int.up);
             if (Input.GetKeyDown(KeyCode.S)) Move(Vector3Int.down);
@@ -45,8 +46,10 @@ public class Player : Actor
 
     void Interact()
     {
-    Vector3Int newPosition = currentGridPosition + dir;
-    if (Interactable.ContainsKey(newPosition))
+        if (GameOver.activeSelf) return;
+
+        Vector3Int newPosition = currentGridPosition + dir;
+        if (Interactable.ContainsKey(newPosition))
         {
             Interactable[newPosition].Interacted();
             MyTurn = false;
@@ -55,16 +58,18 @@ public class Player : Actor
 
     public void EndOfTurn()
     {
+        if (GameOver.activeSelf) return;
+
         MyTurn = false;
 
         for (int i = 0; i < AllActors.Count; i++)
-            if (!AllActors[i].IsPlayer && !Dead.Contains(i))  
+            if (!AllActors[i].IsPlayer && !Dead.Contains(i))
             {
                 if (AllActors[i].currentGridPosition == currentGridPosition) Death();
                 AllActors[i].gameObject.SendMessage("ExecuteCurrentCommand");
                 Debug.Log($"Отправлено сообщение роботу {i}");
-            }         
-        FinalDeath();           
+            }
+        FinalDeath();
         foreach (var b in allButtons)
             b.EvaluateButton();
         MyTurn = true;
@@ -72,23 +77,27 @@ public class Player : Actor
 
     void Move(Vector3Int direction)
     {
+        if (GameOver.activeSelf) return;
+
         Debug.Log("Move direction: " + direction);
         Vector3Int newPosition = currentGridPosition + direction;
         dir = direction;
         UpdateAnimatorDirection(GetDirectionInt());
-        
+
         if (IsValidMove(newPosition))
         {
             currentGridPosition = newPosition;
             UpdatePosition();
-            EndOfTurn();            
+            EndOfTurn();
         }
     }
+
     public override void Death()
     {
         GameOver.SetActive(true);
-        MyTurn = false;   
+        MyTurn = false;
         AllActors.Clear();
+        buttonController.SetGameOverState(true);
     }
 
     int GetDirectionInt()
@@ -98,7 +107,7 @@ public class Player : Actor
         else if (dir == Vector3Int.down) return 3;
         else if (dir == Vector3Int.left) return 4;
         Debug.LogWarning("Unknown direction, defaulting to down");
-        return 3; // Вниз по умолчанию
+        return 3;
     }
 
     void UpdateAnimatorDirection(int direction)
