@@ -10,12 +10,13 @@ public class Player : Actor
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        buttonController = FindFirstObjectByType<NewButtonContoller>();
+
         if (animator == null)
         {
             Debug.LogError("Animator not found on Player_Sprite!");
-        }        
-        
-        // Получаем начальное направление анимации
+        }
+
         int initialDirection = GetDirectionInt();
         Debug.Log("Initial direction: " + initialDirection);
         UpdateAnimatorDirection(initialDirection);
@@ -29,7 +30,7 @@ public class Player : Actor
 
     void Update()
     {
-        if (MyTurn)
+        if (MyTurn && !GameOver.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.W)) Move(Vector3Int.up);
             if (Input.GetKeyDown(KeyCode.S)) Move(Vector3Int.down);
@@ -52,10 +53,12 @@ public class Player : Actor
 
     public void EndOfTurn()
     {
+        if (GameOver.activeSelf) return;
+
         MyTurn = false;
 
         for (int i = 0; i < AllActors.Count; i++)
-            if (!AllActors[i].IsPlayer && !Dead.Contains(i))  
+            if (!AllActors[i].IsPlayer && !Dead.Contains(i))
             {
                 if (AllActors[i].currentGridPosition == currentGridPosition) Death();
                 AllActors[i].gameObject.SendMessage("ExecuteCurrentCommand");
@@ -76,14 +79,15 @@ public class Player : Actor
         Vector3Int newPosition = currentGridPosition + dir;
         direction = dir;
         UpdateAnimatorDirection(GetDirectionInt());
-        
+
         if (IsValidMove(newPosition))
         {
             currentGridPosition = newPosition;
             UpdatePosition();
-            EndOfTurn();            
+            EndOfTurn();
         }
     }
+
     public override void Death()
     {
         GameOver.SetActive(true);
@@ -97,7 +101,7 @@ public class Player : Actor
         else if (direction == Vector3Int.down) return 3;
         else if (direction == Vector3Int.left) return 4;
         Debug.LogWarning("Unknown direction, defaulting to down");
-        return 3; // Вниз по умолчанию
+        return 3;
     }
 
     void UpdateAnimatorDirection(int dir)
