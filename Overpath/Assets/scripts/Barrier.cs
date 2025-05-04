@@ -20,6 +20,6 @@ public class Barrier : MonoBehaviour
     public void SetBarrier(bool Button)
     {
         BarrierActivated = Button;
-        animator.SetBool("Control", !BarrierActivated);
+        animator.SetBool("Control", BarrierActivated);
     }
 }

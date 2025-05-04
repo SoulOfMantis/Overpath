@@ -29,5 +29,5 @@
 - Silent GUI - (https://prinbles.itch.io/silent)
 - Робот - (https://rpgmaker.ru/forum/grafika/38690-ishchu-charsety-robotov) (взят с форума)
 - Игрок (https://seikho.github.io/sprite-creator/)
-- Кнопка (...)-
+- Кнопка (https://chottoinc.itch.io/buttons-pixel-art)
  Звуковые эффекты - (https://sfbgames.itch.io/chiptone)

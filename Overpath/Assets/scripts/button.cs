@@ -6,7 +6,7 @@ public class PressureButton : MonoBehaviour
 {
     public Vector3Int buttonPosition;
     public Tilemap tilemap;
-
+    private Animator animator;
     public List<Barrier> State1Objects; // Активны по умолчанию
     public List<Barrier> State2Objects; // Активны при нажатии
 
@@ -17,6 +17,7 @@ public class PressureButton : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         buttonPosition = tilemap.WorldToCell(transform.position);
         transform.position = tilemap.GetCellCenterWorld(buttonPosition);
         Actor.allButtons.Add(this);
@@ -37,7 +38,7 @@ public class PressureButton : MonoBehaviour
         Obstacle.Add(pos);
 
         EvaluateButton();
-
+        
     }
 
     public void EvaluateButton()
@@ -58,6 +59,7 @@ public class PressureButton : MonoBehaviour
             isPressed = pressedNow;
             UpdateState();
         }
+        UpdateButton(isPressed);
     }
 
     private void UpdateState()
@@ -80,5 +82,10 @@ public class PressureButton : MonoBehaviour
             foreach (var pos in State2Positions) Obstacle.Remove(pos);
             foreach (var pos in State1Positions) Obstacle.Add(pos);
         }
+    }
+
+    public void UpdateButton(bool button)
+    {
+        animator.SetBool("ButtonControl", button);
     }
 }
