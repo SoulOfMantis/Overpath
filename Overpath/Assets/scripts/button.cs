@@ -7,8 +7,8 @@ public class PressureButton : MonoBehaviour
     public Vector3Int buttonPosition;
     public Tilemap tilemap;
 
-    public List<GameObject> State1Objects; // Активны по умолчанию
-    public List<GameObject> State2Objects; // Активны при нажатии
+    public List<Barrier> State1Objects; // Активны по умолчанию
+    public List<Barrier> State2Objects; // Активны при нажатии
 
     public List<Vector3Int> State1Positions; // Координаты блокирующих клеток для состояния 1
     public List<Vector3Int> State2Positions; // Координаты для состояния 2
@@ -24,17 +24,19 @@ public class PressureButton : MonoBehaviour
         foreach (var obj in State1Objects)
         {
             State1Positions.Add(tilemap.WorldToCell(obj.transform.position));
-            obj.SetActive(true);
+            obj.SetBarrier(true);
         }
 
         foreach (var obj in State2Objects)
         {
             State2Positions.Add(tilemap.WorldToCell(obj.transform.position));
-            obj.SetActive(false);
+            obj.SetBarrier(false);
         }
 
         foreach (var pos in State1Positions)
         Obstacle.Add(pos);
+
+        EvaluateButton();
 
     }
 
@@ -63,8 +65,8 @@ public class PressureButton : MonoBehaviour
         if (isPressed)
         {
             // Переключаем визуальные объекты
-            foreach (var obj in State1Objects) obj.SetActive(false);
-            foreach (var obj in State2Objects) obj.SetActive(true);
+            foreach (var obj in State1Objects) obj.SetBarrier(false);
+            foreach (var obj in State2Objects) obj.SetBarrier(true);
 
             // Обновляем препятствия
             foreach (var pos in State1Positions) Obstacle.Remove(pos);
@@ -72,8 +74,8 @@ public class PressureButton : MonoBehaviour
         }
         else
         {
-            foreach (var obj in State1Objects) obj.SetActive(true);
-            foreach (var obj in State2Objects) obj.SetActive(false);
+            foreach (var obj in State1Objects) obj.SetBarrier(true);
+            foreach (var obj in State2Objects) obj.SetBarrier(false);
 
             foreach (var pos in State2Positions) Obstacle.Remove(pos);
             foreach (var pos in State1Positions) Obstacle.Add(pos);
